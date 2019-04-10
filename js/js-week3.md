@@ -77,17 +77,30 @@ var url = 'studdent.json'  //要读取的json文件的路径
 ​		parentNode.removeChild(childNode);  //移除目标节点
 ​		node.parentNode.moveChild(node);  //不清楚父节点的情况下使用
 
-##### 属性获取和操作
+##### 获取属性值
 
-：元素的方法，不能使用document调用。低版本浏览器存在兼容问题
-​	element.getAttribute()  //元素自带属性用点(.)获取,自定义属性必须用getAttribute()和setAttribute()
-​	element.setAttribute()  //设置的属性永远是字符串类型
+：元素的方法，不能使用document调用。
+
+​	element.getAttribute()  //自定义属性必须用getAttribute()和setAttribute()
+​	element.setAttribute(,)  //添加指定的属性并为其赋指定的值(值为字符串类型)。IE8以下存在兼容问题
 ​	element.removeAttribute()  //删除属性
 
+​	采用点(.)获取  //只能获取该元素原型上的属性，如id,className,style
+
 元素样式获取：
-​	element.style;  //只能获取到内联样式里的style
-​		element.style.width
-​	
+element.style;  //常用于赋值，只能获取到内联样式里的style，写在style标签里面的样式与外联样式都无法获取
+
+element.getAtribute()
+
+##### 获取样式
+
+ele.style.attr  //通常用于赋值，只能获取内联样式的样式
+
+ele.currentStyle[attr]   //IE获取样式
+
+getComputedStyle(ele,false)[attr]  //false的意思是可以获取伪元素
+
+
 
 ##### 节点
 
@@ -103,7 +116,7 @@ var url = 'studdent.json'  //要读取的json文件的路径
 ​			文本节点,3，元素节点：1，注释：8，属性节点：2，document节点：9
 ​		nodeName  //返回节点名称（#text(文本节点)，#comment(注释)，标签名）
 
-##### 文档碎片：
+##### 文档碎片
 
 js创建元素之后，先放到文档碎片中存储起来，等所有元素都创建完之后在一次性使用appedChild加入DOM树中去，可以提高效率
 ​	var chach = document.sreateDocumentFragment();  //创建文档碎片，在内存中
@@ -135,14 +148,58 @@ js创建元素之后，先放到文档碎片中存储起来，等所有元素都
 
 ### 事件
 
-##### 事件流：
+事件是给浏览器定义一个预处理函数，当事件触发的时候执行函数
+
+事件对象有兼容问题：e = e||window.event;  //逻辑短路
+
+##### 事件句柄
+
+：click,mousedown,mousemove,mouseup,keydown,keyup,keypress不包含on
+
+元素节点.on+事件句柄 = function(e){
+
+​	e = e.window.event;
+
+​	处理事件....
+
+}
+
+* 鼠标事件click
+
+  | 属性名                | 含义                                                 |
+  | --------------------- | ---------------------------------------------------- |
+  | e.buttons             | 返回鼠标点击按键                                     |
+  | e.clientX\|e.clientY  | 获取鼠标距可视区的距离（根据浏览器定位）             |
+  | e.offsetX\|e.offsetY  | 获取鼠标距事件源左上角的坐标                         |
+  | e.screenX\|e.screentY | 获取鼠标距屏幕左上角的坐标，包括浏览器上面的导航栏区 |
+  | e.pageX\|e.pageY      | 获取文档坐标，相对于整个document定位(包含滚动条)     |
+
+* 键盘事件(document的方法)
+
+  键盘上每一个键都有唯一的编码，存在兼容问题：e.keyCode ||e.which
+
+  特殊键码(boolean类型) e.altKey|e.ctrlKey|e.shiftKey
+
+  ~~~javascript
+  //判断组合键
+  document.onkeydown=function(e){
+  	e = e||window.event;
+      var code = e.keyCode ||e.which;
+      if(code ===13&&e.altKey){
+          alert('同时按下enter和alt');
+      }
+  }
+  ~~~
+
+
+##### 事件流
 
 ​	:事件执行顺序，捕获阶段->目标阶段->冒泡阶段
 ​	事件处理是在冒泡阶段进行。子元素事件触发之后，父元素的相同事件也会被随之触发
 ​	采用事件监听可以设置事件处理在捕获阶段进行。
 ​	IE浏览器不认识捕获，但是有捕获的
 
-##### 阻止冒泡：
+##### 阻止冒泡
 
 ~~~
 e.stopPropagation();
@@ -170,6 +227,22 @@ div.addEventListenner("click",function(){},true)
 	//参数二：处理函数
 	//参数三：是否捕获,true:表示在 捕获阶段进行处理函数，即先触发父元素的处理函数，然后才是子目标
 			//参数三注意兼容IE，IE下不能传这个参数
+~~~
+
+##### 事件委托
+
+：根据利用事件冒泡，只指定一次事件处理程序，处理某一类型的所有事件
+
+优点：
+
+* 只需要绑定一次事件，把事件委托给父级
+* 事件源不确定下没法绑定事件，通过事件委托为新加入元素绑定事件
+
+事件源：获得点击的具体元素
+
+~~~javascript
+var target = e.target || e.secElement;//存在兼容问题
+var tar = target.nodeHTML;//target是一个事件对象的一个对象，获得标签名来判断事件源
 ~~~
 
 

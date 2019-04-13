@@ -21,7 +21,7 @@
 
 ##### 元素属性的获取：
 
-​	div.className  div.id  //使用点获取元素原有的属性的值
+​	div.className  div.id  //使用点获取元素原有的属性的值，或者获取通过用.来自定义的属性值
 ​	div.getAtrribute('index');  //使用getAtrribute()获取setAttribute自定义属性的值，index为自定义属性值
 ​		div.setAttribute("data-odd",1)   //自定义属性data-odd并赋值，属性默认为字符串，data-odd的值为"1"
 ​		div.removeAttribute('data-odd')  //移除属性
@@ -81,16 +81,15 @@ var url = 'studdent.json'  //要读取的json文件的路径
 
 ：元素的方法，不能使用document调用。
 
+​	element.attributes  //获取所有该节点的信息，只做获取。是个属性，不是方法，
+
 ​	element.getAttribute()  //自定义属性必须用getAttribute()和setAttribute()
-​	element.setAttribute(,)  //添加指定的属性并为其赋指定的值(值为字符串类型)。IE8以下存在兼容问题
+
+​	element.setAttribute(,)  //添加指定的属性并为其赋指定的值(值为字符串类型)。IE8以下存在兼容问
+
 ​	element.removeAttribute()  //删除属性
 
 ​	采用点(.)获取  //只能获取该元素原型上的属性，如id,className,style
-
-元素样式获取：
-element.style;  //常用于赋值，只能获取到内联样式里的style，写在style标签里面的样式与外联样式都无法获取
-
-element.getAtribute()
 
 ##### 获取样式
 
@@ -220,18 +219,19 @@ div.onclick = function(){}
 
 ~~~javascript
 if(window.attachEvent){
-    div.attachEvent("onclick",function(){});
-}
-div.addEventListenner("click",function(){},true) 
+    div.attachEvent("onclick",function(){});//IE下，只有冒泡阶段，所以没有第三个参数，注意有on
+}else{
+    div.addEventListenner("click",function(){},true); 
 	//参数一：事件句柄，，没有on
 	//参数二：处理函数
 	//参数三：是否捕获,true:表示在 捕获阶段进行处理函数，即先触发父元素的处理函数，然后才是子目标
-			//参数三注意兼容IE，IE下不能传这个参数
+			
+}
 ~~~
 
 ##### 事件委托
 
-：根据利用事件冒泡，只指定一次事件处理程序，处理某一类型的所有事件
+：利用事件冒泡，只指定一次事件处理程序，处理某一类型的所有事件
 
 优点：
 

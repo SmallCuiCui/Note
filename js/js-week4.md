@@ -15,7 +15,27 @@
 * arguments.callee属性，返回正在执行的函数本身
 * fun.caller  函数的属性，返回调用函数的函数，若函数未执行或调用者不是函数，则返回null
 
+##### 函数节流/函数防抖
 
+* 函数节流：一般在scroll里面，只是在结束滚动的时候触发一次函数。常采用isScroll标记
+
+  ~~~javascript
+  var timer = null;
+  var isScroll = false;
+  window.onscroll = function(){
+      isScroll = true;
+      clearTimeout(timer);
+     //当一直在滚动时都会触发Scroll，清除定时器，只有停止Scroll之后延时计时器timer内的内容才能执行
+      timer = setTimeout(function(){
+          isScroll = false;
+          //执行行为
+      },50)
+  }
+  ~~~
+
+* 函数防抖：一般在定时器用，在打开下一个定时器之前先把上一次的定时器清除
+
+  timer定义为全局，每次进入定时器先清除定时器
 
 ### ES5新增
 
@@ -191,7 +211,7 @@ Object.defineProperty(obj,{
 
 ##### 添加方法
 
-* Array.from(lis);  将类数(如元素节点集合NodeList)转换为数组
+* Array.from(lis);  将类数组(如元素节点集合NodeList)转换为数组
 
 ##### 声明变量
 
@@ -397,9 +417,9 @@ obj.say1();
   }
   ~~~
 
-##### Symbol()生成状态标志
+##### Symbol()类型
 
-Symbol()函数会生成一个唯一的值，作为一些字典变量的值
+第六种基本数据类型Symbol。Symbol()函数会生成一个唯一的值(可用于状态标志)，作为一些字典变量的值
 
 ~~~javascript
 var obj = {
@@ -453,17 +473,208 @@ map.get("name");//qing
 其中constructor被称之为构造方法，在我们new 一个对象的时候，自动被调用，class类必须先定义再使用
 
 ~~~javascript
-class person{
-    constructor(name,age){
+class person{//一个抽象
+    constructor(name,age){//构造函数，
         this.name = name;
         this.age = age;
     }
-    say(){
+    say(){//语法糖方法默认在原型上，所有实例的函数都是同一个
         alert(this.name);
     }
 }
-var xiaoming = new person("xoapming",18);
+var xiaoming = new person("xoapming",18);//每new一次，构造函数就会被调用一次
 ~~~
+
+### 面向对象
+
+##### 创建对象的方式
+
+* 字面量 var obj = {}
+* 通过new运算符  var obj = new Object()
+* 构造函数
+* ES6语法糖
+
+##### 构造函数
+
+外形上与其他函数相同，习惯于大写字母开头(小写字母开头也可以)，采用new调用函数，返回一个Object
+
+* 用来构造(创建)对象的函数
+* 它在声明的时候和普通函数没有区别
+* 用new运算符加上函数调用，调用结果返回一个Object对象
+* 构造函数中的this指的是即将new的那个对象
+
+~~~javascript
+function Fun(){
+    this.name = 'zhang';
+    console.log(this);
+};
+var a = Fun(); //普通调用，Fun是个普通函数
+var b = new Fun();  //new调用，Fun是个构造函数，函数中的this指向new生成实例，即b
+console.log(a);  //得到undefined，函数没有返回值
+cobnsole.log(b);//得到一个Object
+~~~
+
+##### 函数原型prototype
+
+是一个指针，指向原型对象（原型是函数的伴生体）
+
+每一个创建的函数都有一个prototype属性，这个属性是一个指针，指向当前对象的原型对象，这个对象包含所有实例共享的属性和方法
+
+~~~javascript
+function Fn(name){
+    this.name = name;
+    this.say = function(){
+        console.log(this.name);
+    }
+}
+//构造函数中写属性；方法写在原型上，实例可以共享原型上的方法
+Fn.prototype.say1 = function(){
+    console.log(this.name);
+}
+//一次性定义多个函数方法一
+Fn.prototype = {
+    constructor:Fn,//重新赋值函数的原型，需要使用constructor指回去
+    say2:function(){},
+    say3:function(){}
+}
+//一次性定义多个函数方法二
+Fn.prototype = Object.assign(Fn.prototype,{
+    say2:function(){},
+    say3:function(){}
+})
+var a = new Fn('zhang');
+var b = new Fn('heng');
+console.log(a.say === b.say);//false，不同实例的方法不一样
+console.log(a.say1 === b.say1);//true，都是原型上的函数，原型上的函数是共享的
+//实例下的__proto__与构造函数的prototype是一样的，因此实例
+~~~
+
+对象上的属性和方法
+
+* constructor 构造函数的原型(prototype)里面的constructor指向构造函数本身
+
+* \_\_proto\_\_ 指向父类的prototype，每一个对象都有这个属性
+
+* prototype  一个指针，指向当前对象的原型对象。构造函数会有这个属性
+
+* instanceof   运算符，判断当前对象是否是另一个对象的实例  
+
+  console.log(tom instanceof Cat);//true  可以用于判断变量是否为数组或对象
+
+* hasOwnProperty  判断对象上是否存在某个属性，且这个方法会过滤到原型上的属性
+
+  console.log(tom.hasOwnProperty("name"))//true，构造函数里的属性为true，原型上的方法为false
+
+* isPrototypeOf  检查对象是否存在于另一个对象的原型链上
+
+  console.log(a.isPrototypeOf(b));//判断a是否在b的原型链上
+
+##### 原型链
+
+对象都有\_\_proto\_\_属性，指向其构造函数的prototype
+
+构造函数都有prototype属性，是一个指针，指向构造函数的原型对象
+
+~~~javascript
+function Cat(name){
+    this.name = name;
+}
+var tom = Cat('Tom');
+~~~
+
+![原型链](E:\练习\js二阶段\原型链.png)
+
+##### 面向对象的三大特性
+
+* 封装：把一些相关的对象和属性放到一起，用一个变量抽象出来，就完成这个对象的封装
+
+* 继承：子对象可以使用父对象的属性和方法
+
+* 多态：重载，重写
+
+  重载：根据不同参数类型，参数个数实现不同功能
+
+  重写：子对象重新定义与父对象方法名相同的不同方法
+
+### this
+
+##### this指向
+
+* 全局this指向window。匿名函数的this指向window。定时器里的函数常为匿名函数
+
+  全局定义的函数，直接调用时属于在全局调用，this指向window。当赋值调用时，指向所赋的那个对象
+
+* 构造函数的this指向即将new的实例
+
+* 对象方法的this指向对象本身
+
+* IIFE(立即执行函数表达式)  自调用函数的this指向window，不管该自调函数在什么环境下
+
+* 事件里的this指向事件触发对象。
+
+* 箭头函数没有自己的this
+
+
+##### 修改this指向
+
+* call()与repply()  函数调用时修改this指向
+
+  obj1.say.call(obj2,key1,key2);//调用时修改obj1的this指向obj2，方法say属于obj1的.call的第二三个参数对应say函数的参数
+
+  obj1.say.apply(obj2,[key1,key2]);//同call，但是apply参数传递采用数组
+
+  ~~~javascript
+  var obj1 = {
+      name:"zhangsan,
+      say:function(a,b){
+          console.log(this.name);
+          console.log(a,b);
+      }
+  }
+  var obj2 = {
+      name:"lisi"
+  }
+  obj1.say.call(obj2,2,3);//lisi,2,3
+  obj1.say.rapply(obj2,[2,3]);//lisi,2,3
+  ~~~
+
+* bind() 函数封装时修改this
+
+  fun.bind(obj2);
+
+  ~~~javascript
+  var obj1 = {
+      name:"zahngsan",
+      say:function(){
+          console.log(this.name);
+      }.bind(obj2);
+  }
+  var obj2 = {
+      name:"lisi",
+      say1:function(){
+      //更改定时器中匿名函数的this,
+  	setTimeout(function(){
+  		console.log(this.name);
+      }.bind(this),1000);
+      }
+  }
+  obj1.say();//lisi
+  obj2.say1();//lisi
+  ~~~
+
+* 采用变量留住外层this
+
+  ~~~javascript
+  Tab.prototype.bindEvents = function () {
+  	let _this = this; // 把外层this留住
+  	btns.forEach(function (btn, i) {
+  		btn.onclick = function () {
+  		// 根据当前索引切换图片
+  		_this.changeImg(i);
+  		};
+  	})
+  }
+  ~~~
 
 
 

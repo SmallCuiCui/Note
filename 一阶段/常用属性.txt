@@ -1,0 +1,26 @@
+css常用属性：
+
+height:高
+width
+line-height 行高
+font-size 字体大小 单位px
+color 文字颜色
+background-color 背景颜色
+background-position:背景图片位置
+border:1px solid red;边框
+float:left/right/none 浮动
+
+list-style:none; 去除列表符号
+text-decoration:none;去除超链接的下划线
+
+text-align 水平对齐方式
+vertical-align  垂直对齐方式,定义行内元素的基线相对于该元素所在行的基线的对齐方式。
+	baseline(默认)，top（顶部与行内最高元素的顶部对齐）,bottom，middle(放在父元素的中部s),text-bottom(元素底端与文字底部对齐)，inherit继承父元素
+
+margin 外边距
+margin:0 auto;水平居中
+padding 内边距
+
+font-weight:normal;取消加粗
+
+常用颜色：yellow,red,green,blue,black,white,orange,pink,purple

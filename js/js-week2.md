@@ -107,6 +107,12 @@ for(var key in obj){
   arr1.reverse()//将数组元素颠倒
   ~~~
 
+* 查询
+
+  ~~~javascript
+  arr.includes("abc");//判断数组元素中是否存在字符串abc
+  ~~~
+
 * ES5新增方法
 
   ~~~javascript

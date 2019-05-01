@@ -1,0 +1,12 @@
+js代码执行过程：
+	1、语法分析：查找基本语法错误
+	2、预编译：将var,function关键字提前到当前作用域的顶部，变量默认值为undefined，函数默认值为函数体代码块，当函数与变量重名时，保留函数。
+	3、解释执行
+
+例1：
+    var a=123;
+    console.log(a);  //输出123
+例2：
+    console.log(a);  //输出undefined，不会报错，预编译的结果
+    var a=123;
+例3：console.log(a);  //报错a is not defined

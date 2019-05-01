@@ -1,0 +1,8 @@
+1、获取外部样式  IE下使用ele.currentStyle(attr),其他浏览器使用getComputedStyle(ele,false)[attr]
+2、使用event对象时，e = event || window.event，后者兼容IE
+3、事件监听 IE下ele.attachEvent('onclick',fun)；其他ele.addEventLisyenner('click',fun,false)
+4、获取滚轮顶部的距离  document.documentElement.scrollTop与document.body.scrollTop(IE,chrome)
+5、键盘事件获取键值 e.keyCode与e.which
+6、事件委托事件源的获取e.target与e.srcElement
+7、阻止冒泡e.stopPropagation()与e.cancelBubble = true
+8、阻止默认行为e.preventDefault()与e.returnValue = false

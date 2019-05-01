@@ -289,8 +289,6 @@ fun(4,5,8,2)
 
 
 
-
-
 ##### 模板字符串
 
 ``相比较于' '，模板字符串不怕换行，可以通过${}使用变量，可以使用函数
@@ -377,8 +375,9 @@ obj.say1();
   //对象解构用{}
   var obj = {name:"xiao",age:20};
   var {name,ag}=obj;
-  //ar {name,ag="sdc"}=obj;
+  //var {name,ag="sdc"}=obj;
   console.log(name,ag);//name="xiao"  ag：undefined
+  
   //对象与数组一起解构
   var json = [
       {username:"xiaohong",age:20,arr:[2,3,4]},
@@ -388,6 +387,12 @@ obj.say1();
   var [p1,{username}]=json;
   console.log(p1);//{username:"xiaohong",age:20,arr:[2,3,4]}
   console.log(username);//lisi  对应数组第二个对象的username
+  
+  //对象
+  var name = "xiao",
+  	age = 18;
+  var obj = {name,age};
+  console.log(obj);//一个对象
   ~~~
 
 ##### 字符串处理

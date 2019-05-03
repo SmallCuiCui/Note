@@ -1,4 +1,4 @@
-# js二阶段
+ES5  ES6   面向对象  this指向问题
 
 ### Tips
 
@@ -578,16 +578,16 @@ console.log(a.say1 === b.say1);//true，都是原型上的函数，原型上的�
 
 对象都有\_\_proto\_\_属性，指向其构造函数的prototype
 
-构造函数都有prototype属性，是一个指针，指向构造函数的原型对象
+构造函数都有prototype属性，是一个指针，指向构造函数的原型对象。构造函数由Funtion()构造出来的，也有\_proto\_属性，指向Function的prototype
 
 ~~~javascript
 function Cat(name){
     this.name = name;
 }
-var tom = Cat('Tom');
+var tom = new Cat('Tom');
 ~~~
 
-![原型链](E:\练习\js二阶段\原型链.png)
+![原型链](images\原型链.png)
 
 ##### 面向对象的三大特性
 

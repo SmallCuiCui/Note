@@ -1,32 +1,32 @@
 Ê¹ÓÃ¸¡¶¯²¼¾Ö
-	1¡¢¸¡¶¯ÎÊÌâ£º¸ß¶ÈËúÏÝ
-	ÐèÇó£ºÔÚÊµ¼ÊÍøÒ³¿ª·¢ÖÐ£¬ÐèÒªÈÝÆ÷¸ß¶È×ÔÊÊÓ¦£¬¸¸ÔªËØ²»ÉèÖÃ¸ß¶È£¬ÈÃ×ÓÔªËØ³Å¿ª£¬µ±×ÓÔªËØÊ¹ÓÃ¸¡¶¯£¬»á·¢Éú¸ß¶ÈËúÏÝ
-	         £¨ÔÚ±ê×¼Á÷ÖÐ×ÓÔªËØ¿ÉÒÔ°Ñ¸¸ÔªËØ³Å¿ª£¬¸¡¶¯Á÷ÖÐ²»ÄÜ°ÑÈÝÆ÷³Å¿ª£©
-	2¡¢½â¾öÎÊÌâ£ºÇå³ý¸¡¶¯-¼´Çå³ý¸¡¶¯µÄ¸ºÃæÓ°Ïì£¨¸ß¶ÈËúÏÝÎÊÌâ£©
-	Çå³ý¸¡¶¯µÄ·½·¨£º
-		1£©overflow:hidden;¸ø¸¸ÔªËØÉèÖÃ   1¡¢Ô­À´×÷ÓÃ*£ºÎÄ±¾Òç³öÒþ²Ø ÒÔ¼°Òþ²ØÔªËØ    2¡¢Çå³ý¸¡¶¯´øÀ´µÄÓ°Ïì
-		2£©Ê¹ÓÃ¿ÕºÐ×Ó·½·¨ ÔÚÐèÒªÇå³ý¸¡¶¯µÄÔªËØÍ¬¼¶ÏÂ¼ÓÒ»¸ö¿ÕÔªËØ£¨¸ÃÔªËØ²»ÄÜÓÐÆäËûÈÎºÎÑùÊ½£©ÉèÖÃclear:both;
-	3¡¢³öÏÖ¸ß¶ÈËúÏÝÊ±²ÅÇå³ý¸¡¶¯£¬ÆäËûÊ±ºò²»ÐèÒª
+?	1¡¢¸¡¶¯ÎÊÌâ£º¸ß¶ÈËúÏÝ
+?	ÐèÇó£ºÔÚÊµ¼ÊÍøÒ³¿ª·¢ÖÐ£¬ÐèÒªÈÝÆ÷¸ß¶È×ÔÊÊÓ¦£¬¸¸ÔªËØ²»ÉèÖÃ¸ß¶È£¬ÈÃ×ÓÔªËØ³Å¿ª£¬µ±×ÓÔªËØÊ¹ÓÃ¸¡¶¯£¬»á·¢Éú¸ß¶ÈËúÏÝ
+?	         £¨ÔÚ±ê×¼Á÷ÖÐ×ÓÔªËØ¿ÉÒÔ°Ñ¸¸ÔªËØ³Å¿ª£¬¸¡¶¯Á÷ÖÐ²»ÄÜ°ÑÈÝÆ÷³Å¿ª£©
+?	2¡¢½â¾öÎÊÌâ£ºÇå³ý¸¡¶¯-¼´Çå³ý¸¡¶¯µÄ¸ºÃæÓ°Ïì£¨¸ß¶ÈËúÏÝÎÊÌâ£©
+?	Çå³ý¸¡¶¯µÄ·½·¨£º
+?		1£©overflow:hidden;¸ø¸¸ÔªËØÉèÖÃ   1¡¢Ô­À´×÷ÓÃ*£ºÎÄ±¾Òç³öÒþ²Ø ÒÔ¼°Òþ²ØÔªËØ    2¡¢Çå³ý¸¡¶¯´øÀ´µÄÓ°Ïì
+?		2£©Ê¹ÓÃ¿ÕºÐ×Ó·½·¨ ÔÚÐèÒªÇå³ý¸¡¶¯µÄÔªËØÍ¬¼¶ÏÂ¼ÓÒ»¸ö¿ÕÔªËØ£¨¸ÃÔªËØ²»ÄÜÓÐÆäËûÈÎºÎÑùÊ½£©ÉèÖÃclear:both;
+?	3¡¢³öÏÖ¸ß¶ÈËúÏÝÊ±²ÅÇå³ý¸¡¶¯£¬ÆäËûÊ±ºò²»ÐèÒª
 
 ³ÌÐòÖÐ£¬Êý×ÖºÍ×ÖÄ¸ÔÚÒ»ÐÐ×°²»ÏÂÊ±²»ÄÜ×Ô¶¯»»ÐÐ£¬Ó¢ÎÄµ¥´Ê£¨Çø±ðÓÚ×ÖÄ¸ÓÐ¿Õ¸ñ£©¼°ÎÄ×Ö¿ÉÒÔ×Ô¶¯»»ÐÐ
 
 Í¬Ò»ÎÄ±¾´óÐ¡£¬×ÖÌå²»Ò»Ñù£¬³ÊÏÖÐ§¹û²»Ò»Ñù
 
 font-family:×ÖÌåÀàÐÍ,¹È¸èÄ¬ÈÏÎ¢ÈíÑÅºÚ£¬×ÖÌå¿ÉÒÔÉèÖÃ¶à¸ö£¬²ÉÓÃ¶ººÅ¸ô¿ª£¬´ÓµÚÒ»¸ö¿ªÊ¼½âÎö£¬ÓÐ¾Í²ÉÓÃ£¬Ã»ÓÐ¾Í¼ÌÐø½âÎö£¬¶¼Ã»ÓÐ¾Í²ÉÓÃÄ¬ÈÏ
-	×ÖÌåÊÇÖÐÎÄ»òº¬ÓÐ¿Õ¸ñµÄÓ¢ÎÄÊ±ÐèÒªÓÃÒýºÅ£¬µ¥¸öµ¥´Ê²»ÐèÒª¼ÓÒýºÅ   font-family:"Î¢ÈíÑÅºÚ","ºÚÌå","Times New Romam","Arail";
+?	×ÖÌåÊÇÖÐÎÄ»òº¬ÓÐ¿Õ¸ñµÄÓ¢ÎÄÊ±ÐèÒªÓÃÒýºÅ£¬µ¥¸öµ¥´Ê²»ÐèÒª¼ÓÒýºÅ   font-family:"Î¢ÈíÑÅºÚ","ºÚÌå","Times New Romam","Arail";
 
 font-size:×ÖÌå´óÐ¡  ä¯ÀÀÆ÷ÖÐÄ¬ÈÏ´óÐ¡Îª16px  ¹È¸èÖÐÄ¬ÈÏÖ§³Ö×îÐ¡Îª12px
-	1pt=0.75px   
+?	1pt=0.75px   
 
 ÎÄ×Ö¼Ó´Ö font-weight: normal(³£¹æ),bolder(¸ü´Ö),bold(¼Ó´Ö),ÊýÖµ(ÊýÖµÊ±Ã»ÓÐµ¥Î»)100-400Ò»°ã£¬500³£¹æ£¬600-900¼Ó´Ö×ÖÌå£¬¾Å¸öµÈ¼¶
 
 ÎÄ×ÖÇãÐ± font-style:italic(Ð±Ìå×Ö)/oblique(ÇãÐ±)/normal(³£¹æ)
 
 ÎÄ×ÖÐÐ¸ß  line-height:normal/value
-	µ¥ÐÐÎÄ±¾µÄÐÐ¸ßµÈÓÚÈÝÆ÷¸ßÊ±£¬ÊµÏÖÎÄ±¾´¹Ö±¾ÓÖÐ¶ÔÆë
+?	µ¥ÐÐÎÄ±¾µÄÐÐ¸ßµÈÓÚÈÝÆ÷¸ßÊ±£¬ÊµÏÖÎÄ±¾´¹Ö±¾ÓÖÐ¶ÔÆë
 
 fontËõÐ´  font:14px/24px "ºÚÌå";==font-size:12px;line-height:24px;font-family:"ºÚÌå";   ±ØÐë×ÖºÅÓë×ÖÌåÍ¬Ê±ÉèÖÃ²ÅÓÐÐ§,font-sizeÓëline-heightÐèÓÃÐ±Ïß¸ô¿ª
-	Ë³Ðò£ºfont-style, font-weight,font-size/line-height,font-family
+?	Ë³Ðò£ºfont-style, font-weight,font-size/line-height,font-family
 
 ÎÄ±¾ÐÞÊÎ  text-decoration:underline/overline(ÉÏ»®Ïß)/line-through(É¾³ýÏß)/none(Ã»ÓÐÏÂ»®Ïß);
 
@@ -34,43 +34,43 @@ fontËõÐ´  font:14px/24px "ºÚÌå";==font-size:12px;line-height:24px;font-family:"º
 
 
 ÁÐ±í·ûºÅÊôÐÔlist-style  
-	list-style-type:none/circle(¿ÕÐÄÔ²)/square(ÊµÐÄ·½¿é)/disc(ÊµÐÄÔ²);
-	list-style-image:url();Í¼Æ¬×÷ÎªÁÐ±í·ûºÅ ÁÐ±í·ûºÅµÄÎ»ÖÃ²»ºÃµ÷Õû,³£²ÉÓÃ±³¾°Í¼Æ¬È¡´ú
-	list-style-position:inside/outside(Ä¬ÈÏÖµ)
+?	list-style-type:none/circle(¿ÕÐÄÔ²)/square(ÊµÐÄ·½¿é)/disc(ÊµÐÄÔ²);
+?	list-style-image:url();Í¼Æ¬×÷ÎªÁÐ±í·ûºÅ ÁÐ±í·ûºÅµÄÎ»ÖÃ²»ºÃµ÷Õû,³£²ÉÓÃ±³¾°Í¼Æ¬È¡´ú
+?	list-style-position:inside/outside(Ä¬ÈÏÖµ)
 
 ±³¾°Í¼¹Ì¶¨:background-attachment:fixed(¹Ì¶¨)/scroll(¹ö¶¯);
-	Ä¬ÈÏÏÔÊ¾£º1±³¾°Í¼´óÓÚÈÝÆ÷£¬²¿·ÖÏÔÊ¾²»ÏÂ£¬Ð¡ÓÚÈÝÆ÷Ê±»áÆ½ÆÌ
+?	Ä¬ÈÏÏÔÊ¾£º1±³¾°Í¼´óÓÚÈÝÆ÷£¬²¿·ÖÏÔÊ¾²»ÏÂ£¬Ð¡ÓÚÈÝÆ÷Ê±»áÆ½ÆÌ
 
 border-width:±ß¿ò¿í
 border-style:dotted(µã)/dashed(ÐéÏß)/double(Ë«Ïß)  ÒªÓÐË«Ïßborder-width´óÓÚµÈÓÚ3
 
 ¿íÆÁ²¼¾Ö*//Õ­ÆÁ²¼¾Ö
 ¿íÆÁÒ³ÃæÔõÃ´Ð´£º1¡¢ÒªÊÊÓ¦²»Í¬µçÄÔµÄ·Ö±æÂÊ
-	2¡¢¿ª·¢ÖÐ¿íÆÁµÄÒ³Ãæ²»ÄÜ³öÏÖºáÏòµÄ¹ö¶¯Ìõ
-	²ÉÓÃÍâ²ãÊÊÓ¦°Ù·Ö±È£¬ÄÚ²ãÊ¹ÓÃ¹Ì¶¨²¼¾ÖÐÎÊ½-°æÐÄ
-	Á÷Ê½²¼¾Ö·½Ê½£º²ÉÓÃ°Ù·Ö±ÈµÄ²¼¾Ö·½Ê½
+?	2¡¢¿ª·¢ÖÐ¿íÆÁµÄÒ³Ãæ²»ÄÜ³öÏÖºáÏòµÄ¹ö¶¯Ìõ
+?	²ÉÓÃÍâ²ãÊÊÓ¦°Ù·Ö±È£¬ÄÚ²ãÊ¹ÓÃ¹Ì¶¨²¼¾ÖÐÎÊ½-°æÐÄ
+?	Á÷Ê½²¼¾Ö·½Ê½£º²ÉÓÃ°Ù·Ö±ÈµÄ²¼¾Ö·½Ê½
 
 ±ê×¼Á÷ÏÂ¿é¼¶ÔªËØÌØÐÔ£º¿í¶ÈÄ¬ÈÏ³äÂúÈÝÆ÷
-	¿é¼¶ÔªËØ²»ÉèÖÃ¿íºÍÉèÖÃÁË¿í100%Ð§¹ûÉÏÊÇÒ»ÑùµÄ£¬Çø±ðÊÇÒ»¸öÓÐ¿íÒ»¸öÃ»ÓÐ¿í£¬µ±ÍÑÀëÎÄµµÁ÷Ö®ºóÃ»ÓÐÉèÖÃ¿íµÄÔªËØµÄ¿íÎª0£¬ÍÑÀëÎÄµµÁ÷µÄÔªËØÐèÒª¼ÓÉÏ¿íÐèÒª¼ÓÉÏ¿í
+?	¿é¼¶ÔªËØ²»ÉèÖÃ¿íºÍÉèÖÃÁË¿í100%Ð§¹ûÉÏÊÇÒ»ÑùµÄ£¬Çø±ðÊÇÒ»¸öÓÐ¿íÒ»¸öÃ»ÓÐ¿í£¬µ±ÍÑÀëÎÄµµÁ÷Ö®ºóÃ»ÓÐÉèÖÃ¿íµÄÔªËØµÄ¿íÎª0£¬ÍÑÀëÎÄµµÁ÷µÄÔªËØÐèÒª¼ÓÉÏ¿íÐèÒª¼ÓÉÏ¿í
 
 µ±¸ø×ÓÔªËØÉèÖÃmargin-topÊ±£¬ä¯ÀÀÆ÷ÔÚ½âÎö´úÂëÊ±»áÎóÈÏÎª¸ø¸¸ÔªËØÉèÖÃµÄ£¬ËùÒÔÕûÌå»áÍùÏÂµÄÇé¿ö¡£
-	×¢Òâµã£º1¡¢×ÓÔªËØÍÑÀëÎÄµµÁ÷Ê±²»»á
-	2¡¢µ±ÈÝÆ÷ÊÇ±ß¿òµÄÊ±ºòÒ²²»»á
-	3¡¢µ±ÈÝÆ÷ºÍ×ÓÔªËØ¶¼ÊÇ±ß¿òÊ±Ò²²»»áµô
-       ½â¾ö°ì·¨£ºÈÝÆ÷ÉèÖÃoverflow:hidden;     £¨¸¸ÔªËØÓÐ±ß¿ò»òÉèÖÃoverflowÊ±£¬×ÓÔªËØ¸¡¶¯Ê±£¬¾ù²»»áµô£©
+?	×¢Òâµã£º1¡¢×ÓÔªËØÍÑÀëÎÄµµÁ÷Ê±²»»á
+?	2¡¢µ±ÈÝÆ÷ÊÇ±ß¿òµÄÊ±ºòÒ²²»»á
+?	3¡¢µ±ÈÝÆ÷ºÍ×ÓÔªËØ¶¼ÊÇ±ß¿òÊ±Ò²²»»áµô
+?       ½â¾ö°ì·¨£ºÈÝÆ÷ÉèÖÃoverflow:hidden;     £¨¸¸ÔªËØÓÐ±ß¿ò»òÉèÖÃoverflowÊ±£¬×ÓÔªËØ¸¡¶¯Ê±£¬¾ù²»»áµô£©
 
 
 
 ºÐ×ÓÄ£ÐÍ£ºcss²¼¾ÖµÄ»ù´¡£¬¹æ¶¨ÁËÍøÒ³ÖÐµÄÔªËØÈçºÎÏÔÊ¾£¬ÒÔ¼°ÔªËØÖ®¼äµÄÏà»¥¹ØÏµ¡£
-	ºÐÄ£ÐÍµÄ×é³É£ºborder£¨±ß¿ò£©£¬margin£¨Íâ±ß¾à£©£¬padding£¨ÄÚ±ß¾à£©£¬content£¨ÄÚÈÝ¿í¸ß£©¡£
-	ºÐ×ÓÄÚÈÝ-ÎÄ±¾£¬ÔªËØ
-	marginÓëpadding Ê¹ÓÃÇø±ð£º
-		1£©µ±ÔªËØÄÚÈÝÊÇÎÄ±¾µÄÊ±ºò£¬±ØÐëÊ¹ÓÃpadding
-			×¢Òâµã£ºµ±Ê¹ÓÃpaddingÊ±£¬»á°ÑÔªËØµÄÔ­ÓÐ´óÐ¡¸Ä±ä£¬Èç¹û²»Ïë¸Ä±äÔªËØ´óÐ¡µÄÔ­ÓÐ´óÐ¡£¬ÓÖÏë³öÏÖÐ§¹û±ØÐë´ÓwidthÓëheight¼õÈ¥ÏàÓ¦µÄpaddingÖµ
-			µ±ÔªËØÃ»ÓÐÉèÖÃwidthºÍheightµÄÊ±ºò£¬paddingÖµ²»ÐèÒª¼õÈ¥
-		2£©µ±ÔªËØµÄÄÚÈÝÊÇÔªËØÊ±£¬Õâ¸öÊ±ºò¼È¿ÉÒÔÊ¹ÓÃmarginÒ²¿ÉÒÔÊ¹ÓÃpadding£¬ÄÄ¸ö¼òµ¥ÓÃÄÄ¸ö.
-	±ê×¼ºÐÄ£ÐÍ¿í£¨¸ß£©=×óÓÒmargin+×óÓÒpadding+×óÓÒborder+width£¨height£©
-	ºÐÄ£ÐÍ×ª»»ÎªIE£¨¹ÖÒì£©ºÐÄ£ÐÍ
+?	ºÐÄ£ÐÍµÄ×é³É£ºborder£¨±ß¿ò£©£¬margin£¨Íâ±ß¾à£©£¬padding£¨ÄÚ±ß¾à£©£¬content£¨ÄÚÈÝ¿í¸ß£©¡£
+?	ºÐ×ÓÄÚÈÝ-ÎÄ±¾£¬ÔªËØ
+?	marginÓëpadding Ê¹ÓÃÇø±ð£º
+?		1£©µ±ÔªËØÄÚÈÝÊÇÎÄ±¾µÄÊ±ºò£¬±ØÐëÊ¹ÓÃpadding
+?			×¢Òâµã£ºµ±Ê¹ÓÃpaddingÊ±£¬»á°ÑÔªËØµÄÔ­ÓÐ´óÐ¡¸Ä±ä£¬Èç¹û²»Ïë¸Ä±äÔªËØ´óÐ¡µÄÔ­ÓÐ´óÐ¡£¬ÓÖÏë³öÏÖÐ§¹û±ØÐë´ÓwidthÓëheight¼õÈ¥ÏàÓ¦µÄpaddingÖµ
+?			µ±ÔªËØÃ»ÓÐÉèÖÃwidthºÍheightµÄÊ±ºò£¬paddingÖµ²»ÐèÒª¼õÈ¥
+?		2£©µ±ÔªËØµÄÄÚÈÝÊÇÔªËØÊ±£¬Õâ¸öÊ±ºò¼È¿ÉÒÔÊ¹ÓÃmarginÒ²¿ÉÒÔÊ¹ÓÃpadding£¬ÄÄ¸ö¼òµ¥ÓÃÄÄ¸ö.
+?	±ê×¼ºÐÄ£ÐÍ¿í£¨¸ß£©=×óÓÒmargin+×óÓÒpadding+×óÓÒborder+width£¨height£©
+?	ºÐÄ£ÐÍ×ª»»ÎªIE£¨¹ÖÒì£©ºÐÄ£ÐÍ
 
 	box-sizing:border-box(¹ÖÒìºÐÄ£ÐÍ)/content-box(±ê×¼ºÐÄ£ÐÍ£¬Ä¬ÈÏ)£»css3ÐÂÔöºÐÄ£ÐÍÊôÐÔ£¬
 		¹îÒìºÐÄ£ÐÍÊ±£¬ÒòÎªpaddingÖµÔö¼ÓµÄ¿í¸ß²»ÐèÒª¼õÈ¥£¬»á×Ô¶¯½áËã¼õµô¡£
@@ -80,11 +80,11 @@ outline:none:È¥µô±íµ¥¾Û½¹Ê±µÄ±ß¿ò;
 letter-spacing:×Ö¼ä¾à
 
 overflow:visible/hidden()/scroll()/auto()/inherit;
-	visible:Ä¬ÈÏÖµ£¬ÄÚÈÝ²»»á±»ÐÞ¼ô£¬»á³ÊÏÖÔÚÔªËØ¿òÍâ
-	hidden:ÄÚÈÝ»á±»ÐÞ¼ô£¬²»¿É¼û
-	scroll:²»¹ÜÄÚÈÝÊÇ·ñ±»ÐÞ¼ô¶¼ÓÐ¹ö¶¯Ìõ
-	auto:Èç¹ûÄÚÈÝ±»ÐÞ¼ô£¬Ôòä¯ÀÀÆ÷»áÏÔÊ¾¹ö¶¯Ìõ£¬·ñÔò²»»áÏÔÊ¾
-	inherit:´Ó¸¸ÔªËØ¼Ì³Ð
+?	visible:Ä¬ÈÏÖµ£¬ÄÚÈÝ²»»á±»ÐÞ¼ô£¬»á³ÊÏÖÔÚÔªËØ¿òÍâ
+?	hidden:ÄÚÈÝ»á±»ÐÞ¼ô£¬²»¿É¼û
+?	scroll:²»¹ÜÄÚÈÝÊÇ·ñ±»ÐÞ¼ô¶¼ÓÐ¹ö¶¯Ìõ
+?	auto:Èç¹ûÄÚÈÝ±»ÐÞ¼ô£¬Ôòä¯ÀÀÆ÷»áÏÔÊ¾¹ö¶¯Ìõ£¬·ñÔò²»»áÏÔÊ¾
+?	inherit:´Ó¸¸ÔªËØ¼Ì³Ð
 
 preÔ¤¸ñÊ½»¯±êÇ© <pre></pre>¿é¼¶±êÇ©£¬¿ÉÒÔ±£Áô´úÂëÖÐµÄ»»ÐÐ£¬¿Õ¸ñµÈÎÄ±¾¸ñÊ½
 code´úÂë±êÇ©  <code></code>ÄÚÁª±êÇ©£¬×¨ÃÅ·ÅÖÃÔ´´úÂëµÄ±êÇ©¡£¹¤×÷ÖÐ³£ÓÃpre±êÇ©´úÌæ
@@ -95,32 +95,32 @@ code´úÂë±êÇ©  <code></code>ÄÚÁª±êÇ©£¬×¨ÃÅ·ÅÖÃÔ´´úÂëµÄ±êÇ©¡£¹¤×÷ÖÐ³£ÓÃpre±êÇ©´úÌæ
 <nobr></nobr>Ç¿ÖÆ²»»»ÐÐ
 
 ¿ÕÓà¿Õ¼äwhite-space:nowrap/pre/pre-wrap/pre-line;//ÉèÖÃÈçºÎ´¦ÀíÔªËØÄÚµÄ¿Õ°×
-	nowrap:Ç¿ÖÆ²»»»ÐÐ
-	pre:¿Õ°×±»±£Áô£¬ÀàËÆpre±êÇ©
-	pre-wrap:±£ÁôËùÓÐ¿Õ¸ñ£¬±£Áô»»ÐÐ
-	pre-line:¿Õ¸ñÖ»±£ÁôÒ»¸ö£¬±£Áô»»ÐÐ
+?	nowrap:Ç¿ÖÆ²»»»ÐÐ
+?	pre:¿Õ°×±»±£Áô£¬ÀàËÆpre±êÇ©
+?	pre-wrap:±£ÁôËùÓÐ¿Õ¸ñ£¬±£Áô»»ÐÐ
+?	pre-line:¿Õ¸ñÖ»±£ÁôÒ»¸ö£¬±£Áô»»ÐÐ
 
 text-overflow:ellipsis/clip;
-	ellipsisi:µ±µ¥ÐÐÎÄ±¾Òç³öÊ±ÏÔÊ¾Ê¡ÂÔºÅ£¬³£Óëoverflow:hiddenÒ»ÆðÊ¹ÓÃ;
-	clip£º²»ÏÔÊ¾Ê¡ÂÔºÅ
+?	ellipsisi:µ±µ¥ÐÐÎÄ±¾Òç³öÊ±ÏÔÊ¾Ê¡ÂÔºÅ£¬³£Óëoverflow:hiddenÒ»ÆðÊ¹ÓÃ;
+?	clip£º²»ÏÔÊ¾Ê¡ÂÔºÅ
 
 text-align:Ê¹ÎÄ±¾ÓëÍ¼Æ¬Ë®Æ½¾ÓÖÐ£¬ÉèÖÃÔÚ¸¸ÔªËØÉÏÃæ
 
 
 
 ÔªËØÀàÐÍ£º
-	1¡¢¿é¼¶ÔªËØ	¶ÀÕ¼Ò»ÐÐ£¬×ÔÉÏ¶øÏÂÅÅÁÐ£¬¿ÉÒÔÉèÖÃ¿íºÍ¸ß£¬Ò»°ã×÷ÎªÆäËûÔªËØµÄÈÝÆ÷
-	2¡¢ÄÚÁªÔªËØ	ºáÏòÅÅÁÐ£¬²»ÄÜÉèÖÃ¿í¸ß£¨±ê×¼Á÷ÖÐ²»ÄÜÉèÖÃ¿í¸ß-ÍÑÀëÎÄµµÁ÷¿ÉÒÔÉèÖÃ¿í¸ß  Èç³ÉÎª¸¡¶¯Á÷ »òÕß¶¨Î»Á÷ÖÐµÄ¾ø¶ÔÁ÷Óë¹Ì¶¨Á÷£©
-	3¡¢ÄÚÁª¿éÔªËØ	ºáÏòÅÅÁÐ£¬¿ÉÒÔÉèÖÃ¿í¸ß
+?	1¡¢¿é¼¶ÔªËØ	¶ÀÕ¼Ò»ÐÐ£¬×ÔÉÏ¶øÏÂÅÅÁÐ£¬¿ÉÒÔÉèÖÃ¿íºÍ¸ß£¬Ò»°ã×÷ÎªÆäËûÔªËØµÄÈÝÆ÷
+?	2¡¢ÄÚÁªÔªËØ	ºáÏòÅÅÁÐ£¬²»ÄÜÉèÖÃ¿í¸ß£¨±ê×¼Á÷ÖÐ²»ÄÜÉèÖÃ¿í¸ß-ÍÑÀëÎÄµµÁ÷¿ÉÒÔÉèÖÃ¿í¸ß  Èç³ÉÎª¸¡¶¯Á÷ »òÕß¶¨Î»Á÷ÖÐµÄ¾ø¶ÔÁ÷Óë¹Ì¶¨Á÷£©
+?	3¡¢ÄÚÁª¿éÔªËØ	ºáÏòÅÅÁÐ£¬¿ÉÒÔÉèÖÃ¿í¸ß
 ÔªËØÀàÐÍ±¾Éí×¢Òâµã£º
-	1£©Ò»°ãÊ¹ÓÃdivÈ¥Ç¶Ì×ÆäËûÔªËØ - divÍøÒ³²¼¾Ö£¬»®·ÖÍøÒ³ÇøÓò
-	2£©p±êÇ©²»ÄÜÇ¶Ì×ÆäËû¿é¼¶ÔªËØ
-	3£©ÄÚÁªÔªËØÊ¹ÓÃmargin-top»òÕßpadding-topÓÐÎÊÌâ£¬²»Æð×÷ÓÃ»òÕß²»¹æ·¶¡£margin-leftÕý³£
+?	1£©Ò»°ãÊ¹ÓÃdivÈ¥Ç¶Ì×ÆäËûÔªËØ - divÍøÒ³²¼¾Ö£¬»®·ÖÍøÒ³ÇøÓò
+?	2£©p±êÇ©²»ÄÜÇ¶Ì×ÆäËû¿é¼¶ÔªËØ
+?	3£©ÄÚÁªÔªËØÊ¹ÓÃmargin-top»òÕßpadding-topÓÐÎÊÌâ£¬²»Æð×÷ÓÃ»òÕß²»¹æ·¶¡£margin-leftÕý³£
 
 ¸Ä±äÔªËØÀàÐÍ£ºdisplay£ºinline(ÄÚÁª)/block(¿é¼¶)/inline-block(ÄÚÁª¿é)/none/list-item(×ª»»³ÉÁÐ±íÀàÐÍ)
-	×¢Òâµã£ºÄÚÁª¿éÔªËØ²»ÄÜ×ª³ÉÄÚÁªÔªËØ,ÒòÎªÄÚÁª¿éÔªËØÄ¬ÈÏÓÐÄÚÔÚÑùÊ½¡£µ«¿ÉÒÔ×ª»»³É¿é¼¶ÔªËØ¡£±ÈÈçinputÔªËØ
-	display:block;	1¡¢ÈÃÆäËûÔªËØ×ª»»³É¿é¼¶ÔªËØ 2¡¢±íÊ¾ÈÃÒ»¸öÒþ²ØµÄÔªËØÏÔÊ¾£¬²¢ÇÒ±ä³É¿é¼¶ÔªËØ
-	display:none;	ÈÃÔªËØÒþ²Ø
+?	×¢Òâµã£ºÄÚÁª¿éÔªËØ²»ÄÜ×ª³ÉÄÚÁªÔªËØ,ÒòÎªÄÚÁª¿éÔªËØÄ¬ÈÏÓÐÄÚÔÚÑùÊ½¡£µ«¿ÉÒÔ×ª»»³É¿é¼¶ÔªËØ¡£±ÈÈçinputÔªËØ
+?	display:block;	1¡¢ÈÃÆäËûÔªËØ×ª»»³É¿é¼¶ÔªËØ 2¡¢±íÊ¾ÈÃÒ»¸öÒþ²ØµÄÔªËØÏÔÊ¾£¬²¢ÇÒ±ä³É¿é¼¶ÔªËØ
+?	display:none;	ÈÃÔªËØÒþ²Ø
 
 
 ÄÚÁª¿éÔªËØ
@@ -131,14 +131,14 @@ text-align:Ê¹ÎÄ±¾ÓëÍ¼Æ¬Ë®Æ½¾ÓÖÐ£¬ÉèÖÃÔÚ¸¸ÔªËØÉÏÃæ
 
 
 ÔªËØ´¹Ö±¾ÓÖÐ**£º
-	¸¸ÔªËØÉèÖÃ×ª³Éµ¥Ôª¸ñÀàÐÍ  display:table-cell;   vertical-align:middle;   ´æÔÚÎÊÌâ£º¸¸ÔªËØÎÞ·¨ÉèÖÃmarginÖµ£¬¿ÉÒÔÉèÖÃpadding
+?	¸¸ÔªËØÉèÖÃ×ª³Éµ¥Ôª¸ñÀàÐÍ  display:table-cell;   vertical-align:middle;   ´æÔÚÎÊÌâ£º¸¸ÔªËØÎÞ·¨ÉèÖÃmarginÖµ£¬¿ÉÒÔÉèÖÃpadding
 
 Ë®Æ½¾ÓÖÐ£º¸¸ÔªËØtext-align:center;×ÓÔªËØÎªÄÚÁªÔªËØ»òÄÚÁª¿é//»òÕß×ÓÔªËØÉèÖÃ¿í£¬margin:0 auto;
 
 vertical-align:middle/top/bottom;
-	1¡¢Ê¹ÎÄ×ÖÓëÍ¼Æ¬´¹Ö±¾ÓÖÐ£¬ÒÔ¸ß¶È´óµÄÎª²Î¿¼£¬¿é¼¶ÔªËØÎÞÐ§¡£ÉèÖÃÔÚÎÄ×ÖÓëÍ¼Æ¬ÉÏ£¬²¢·ÇÈÝÆ÷ÉÏ¡£
-	2¡¢Ê¹ÔªËØ´¹Ö±¾ÓÖÐ
-	2¡¢½â¾öÍ¼Æ¬¼äÏ¶ÎÊÌâ£¨ÈÝÆ÷Ã»ÓÐ¸ßµÄÇé¿öÏÂ£¬Í¼Æ¬Ä¬ÈÏ½«ÈÝÆ÷³Å´ó£©
+?	1¡¢Ê¹ÎÄ×ÖÓëÍ¼Æ¬´¹Ö±¾ÓÖÐ£¬ÒÔ¸ß¶È´óµÄÎª²Î¿¼£¬¿é¼¶ÔªËØÎÞÐ§¡£ÉèÖÃÔÚÎÄ×ÖÓëÍ¼Æ¬ÉÏ£¬²¢·ÇÈÝÆ÷ÉÏ¡£
+?	2¡¢Ê¹ÔªËØ´¹Ö±¾ÓÖÐ
+?	2¡¢½â¾öÍ¼Æ¬¼äÏ¶ÎÊÌâ£¨ÈÝÆ÷Ã»ÓÐ¸ßµÄÇé¿öÏÂ£¬Í¼Æ¬Ä¬ÈÏ½«ÈÝÆ÷³Å´ó£©
 
 ÖÃ»»ÔªËØ£ºä¯ÀÀÆ÷¸ù¾ÝÔªËØµÄ±êÇ©ºÍÊôÐÔ£¬
 ·ÇÖÃ»»ÔªËØ
@@ -150,50 +150,50 @@ vertical-align:middle/top/bottom;
 
 
 ¶¨Î»position£º
-	1¡¢Óï·¨  position:static(Ä¬ÈÏ£¬¾²Ì¬¶¨Î»)/absolute(¾ø¶Ô¶¨Î»)/relative(Ïà¶Ô¶¨Î»)/fixed(¹Ì¶¨¶¨Î»);
-	2¡¢¶¨Î»ÐèÇó£ºÐèÒªÔªËØ²ãµþÅÅÁÐ£¬ÔªËØ¹Ì¶¨ÔÚÄ³¸öÎ»ÖÃ
+?	1¡¢Óï·¨  position:static(Ä¬ÈÏ£¬¾²Ì¬¶¨Î»)/absolute(¾ø¶Ô¶¨Î»)/relative(Ïà¶Ô¶¨Î»)/fixed(¹Ì¶¨¶¨Î»);
+?	2¡¢¶¨Î»ÐèÇó£ºÐèÒªÔªËØ²ãµþÅÅÁÐ£¬ÔªËØ¹Ì¶¨ÔÚÄ³¸öÎ»ÖÃ
 ¶¨Î»Á÷£º1¡¢¸øÔªËØÉèÖÃÁËpositionÊôÐÔ£¬È»ºó³ÉÎª¶¨Î»Á÷
-	2¡¢¶¨Î»Á÷ºÍ±ê×¼Á÷²»ÊÇÒ»¸ö²ã´ÎµÄ£¬¿ÉÒÔÀí½âÎªÔÚ±ê×¼Á÷Ö®ÉÏ
-	3¡¢¶¨Î»ÊôÐÔ±ØÐëÅäºÏtop£¬left£¬bottom£¬rightÊ¹ÓÃ
-	4¡¢¶¨Î»ÊôÐÔ¿ÉÒÔ²ãµþ-¶¨Î»ÓÐ²ã¼¶¹ØÏµ
-	5¡¢¶¨Î»ÊôÐÔ²ã¼¶¹ØÏµ-ºóÃæ°ÑÇ°ÃæµÄ¸²¸Ç
+?	2¡¢¶¨Î»Á÷ºÍ±ê×¼Á÷²»ÊÇÒ»¸ö²ã´ÎµÄ£¬¿ÉÒÔÀí½âÎªÔÚ±ê×¼Á÷Ö®ÉÏ
+?	3¡¢¶¨Î»ÊôÐÔ±ØÐëÅäºÏtop£¬left£¬bottom£¬rightÊ¹ÓÃ
+?	4¡¢¶¨Î»ÊôÐÔ¿ÉÒÔ²ãµþ-¶¨Î»ÓÐ²ã¼¶¹ØÏµ
+?	5¡¢¶¨Î»ÊôÐÔ²ã¼¶¹ØÏµ-ºóÃæ°ÑÇ°ÃæµÄ¸²¸Ç
 
 Ïà¶Ô¶¨Î»ÌØµã£º
-	1¡¢Ïà¶Ô¶¨Î»²»ÍÑÀëÎÄµµÁ÷µÄ£¬Õ¼¿Õ¼ä£¬Çø·ÖÔªËØÀàÐÍ-¾ÍÊÇÔªËØÊ±Ê²Ã´ÀàÐÍ£¬Ïà¶Ô¶¨Î»Ö®ºó»¹ÊÇÊ²Ã´ÀàÐÍ
-	2¡¢Ïà¶Ô¶¨Î»ÊÇÏà¶ÔÓÚ×Ô¼ºÒÔÇ°ÔÚ±ê×¼Á÷ÖÐµÄÎ»ÖÃ½øÐÐ¶¨Î»µÄ
-	3¡¢¶ÔÔªËØ½øÐÐÎ¢µ÷£¬×Ó¾ø¸¸Ïà£¨¸¸ÔªËØÉèÖÃÏà¶Ô¶¨Î»£¬×ÓÔªËØ¾ø¶Ô¶¨Î»£©
+?	1¡¢Ïà¶Ô¶¨Î»²»ÍÑÀëÎÄµµÁ÷µÄ£¬Õ¼¿Õ¼ä£¬Çø·ÖÔªËØÀàÐÍ-¾ÍÊÇÔªËØÊ±Ê²Ã´ÀàÐÍ£¬Ïà¶Ô¶¨Î»Ö®ºó»¹ÊÇÊ²Ã´ÀàÐÍ
+?	2¡¢Ïà¶Ô¶¨Î»ÊÇÏà¶ÔÓÚ×Ô¼ºÒÔÇ°ÔÚ±ê×¼Á÷ÖÐµÄÎ»ÖÃ½øÐÐ¶¨Î»µÄ
+?	3¡¢¶ÔÔªËØ½øÐÐÎ¢µ÷£¬×Ó¾ø¸¸Ïà£¨¸¸ÔªËØÉèÖÃÏà¶Ô¶¨Î»£¬×ÓÔªËØ¾ø¶Ô¶¨Î»£©
 ¾ø¶Ô¶¨Î»ÌØµã£º
-	1¡¢¾ø¶Ô¶¨Î»ÍÑÀëÎÄµµÁ÷£¬²»Õ¼¿Õ¼ä£¬²»Çø·ÖÔªËØÀàÐÍ£¨±ÈÈçÐÐÄÚÔªËØÒ²¿ÉÒÔÉèÖÃ¸ß¿í£©¡£
-	2¡¢Ïà¶ÔÓÚ×î½üÒ»¼¶ÓµÓÐ¶¨Î»Á÷µÄ×æÏÈÔªËØ½øÐÐ¶¨Î»¡£Èç¹ûËüµÄÉÏ¼¶¶¼Ã»ÓÐ¶¨Î»Á÷£¬ÔòÒÔbody¶¨Î»£»
-	×¢Òâ£º¾ø¶Ô¶¨Î»Ïà¶ÔÓÚË­¶¨Î»Ê±£¬Ä¬ÈÏÏÈÈ¥ÕÒÉÏÒ»¼¶
+?	1¡¢¾ø¶Ô¶¨Î»ÍÑÀëÎÄµµÁ÷£¬²»Õ¼¿Õ¼ä£¬²»Çø·ÖÔªËØÀàÐÍ£¨±ÈÈçÐÐÄÚÔªËØÒ²¿ÉÒÔÉèÖÃ¸ß¿í£©¡£
+?	2¡¢Ïà¶ÔÓÚ×î½üÒ»¼¶ÓµÓÐ¶¨Î»Á÷µÄ×æÏÈÔªËØ½øÐÐ¶¨Î»¡£Èç¹ûËüµÄÉÏ¼¶¶¼Ã»ÓÐ¶¨Î»Á÷£¬ÔòÒÔbody¶¨Î»£»
+?	×¢Òâ£º¾ø¶Ô¶¨Î»Ïà¶ÔÓÚË­¶¨Î»Ê±£¬Ä¬ÈÏÏÈÈ¥ÕÒÉÏÒ»¼¶
 ¹Ì¶¨¶¨Î»ÌØµã£º
-	1¡¢ÍÑÀëÎÄµµÁ÷£¬²»Õ¼¿Õ¼ä£¬²»Çø·ÖÔªËØÀàÐÍ
-	2¡¢Ïà¶ÔÓÚbody¶¨Î»
-	3¡¢²»»áËæ×Å¹ö¶¯Ìõ¶ø¹ö¶¯
+?	1¡¢ÍÑÀëÎÄµµÁ÷£¬²»Õ¼¿Õ¼ä£¬²»Çø·ÖÔªËØÀàÐÍ
+?	2¡¢Ïà¶ÔÓÚbody¶¨Î»
+?	3¡¢²»»áËæ×Å¹ö¶¯Ìõ¶ø¹ö¶¯
 
 ¶¨Î»ÊµÏÖÔªËØ´¹Ö±¾ÓÖÐ£º
-	1£©×Ó¾ø¸¸Ïà£¬×ÓÔªËØtop,right,left,bottom¶¼Îª0£¬marginÎªauto
-	2£©×Ó¾ø¸¸Ïà£¬×ÓÔªËØleft,topÎª50%£¬margin-leftÓëmargin-topÎª¸ºµÄ¿í¸ßµÄÒ»°ë
+?	1£©×Ó¾ø¸¸Ïà£¬×ÓÔªËØtop,right,left,bottom¶¼Îª0£¬marginÎªauto
+?	2£©×Ó¾ø¸¸Ïà£¬×ÓÔªËØleft,topÎª50%£¬margin-leftÓëmargin-topÎª¸ºµÄ¿í¸ßµÄÒ»°ë
 
 z-index:¿ØÖÆ¶¨Î»ÔªËØµÄ²ã¼¶  auto/¾ßÌåÊýÖµ£¨Ã»ÓÐµ¥Î»£¬¿ÉÒÔÎª¸ºÖµ£©
 
 Í¸Ã÷¶È£º±ê×¼Ð´·¨opacity:ÊýÖµ;  È¡Öµ·¶Î§0-1Ð¡Êý
-             IEÐ´·¨ filter:alpha(opacity=value);È¡Öµ·¶Î§1-100
-	Òþ²ØÔªËØµÄ·½·¨ opacity:0;
+?             IEÐ´·¨ filter:alpha(opacity=value);È¡Öµ·¶Î§1-100
+?	Òþ²ØÔªËØµÄ·½·¨ opacity:0;
 
 ×ÖÄ»¹ö¶¯ <marquee></marquee>Ä¬ÈÏ´ÓÓÒÏò×ó
-	behavior="alternate"±íÊ¾×óÓÒ¹ö¶¯
-	direction="right"Ö¸¶¨·½Ïò´Ó×óÏòÓÒ
-	scrollamount="50"Ö¸¶¨ËÙ¶È
+?	behavior="alternate"±íÊ¾×óÓÒ¹ö¶¯
+?	direction="right"Ö¸¶¨·½Ïò´Ó×óÏòÓÒ
+?	scrollamount="50"Ö¸¶¨ËÙ¶È
 
 Í¼Æ¬ÕûºÏ¼¼Êõ (sprite ¾«ÁéÍ¼)  background-position
-	°ÑºÜ¶àÕÅÐ¡Í¼ÕûºÏ³ÉÒ»ÕÅ´óÍ¼£¬Í¨¹ýbackground-positionÊôÐÔÀ´Ê¹ÓÃ
-	¿ÉÒÔÌá¸ß¼ÓÔØËÙ¶È£¬¼õÇá·þÎñÆ÷Ñ¹Á¦£¬¿ÉÒÔ¼õÐ¡Í¼Æ¬µÄÌå»ý
+?	°ÑºÜ¶àÕÅÐ¡Í¼ÕûºÏ³ÉÒ»ÕÅ´óÍ¼£¬Í¨¹ýbackground-positionÊôÐÔÀ´Ê¹ÓÃ
+?	¿ÉÒÔÌá¸ß¼ÓÔØËÙ¶È£¬¼õÇá·þÎñÆ÷Ñ¹Á¦£¬¿ÉÒÔ¼õÐ¡Í¼Æ¬µÄÌå»ý
 
 ÐòÁÐÑ¡ÔñÆ÷  :nth-child()
-	ul li:nth-child(2){   /*ulÏÂµÄµÚ¶þ¸öli*/
-	background-position:-62px 0;
-	}
+?	ul li:nth-child(2){   /*ulÏÂµÄµÚ¶þ¸öli*/
+?	background-position:-62px 0;
+?	}
 
 ¿í¸ß×ÔÊÊÓ¦£ºheight:auto;ÀûÓÃ×ÓÔªËØ°ÑÈÝÆ÷³Å¿ª
 min-width£º×îÐ¡¿í¶È¿ÉÒÔÉìËõµ½Ò»¶¨³Ì¶ÈÖ®ºó²»ÔÙ½øÐÐÑ¹Ëõ£¬È»ºó²úÉú¹ö¶¯Ìõ¡£Í¬Ê±Ò²ÐèÒª¸ø¶¨¿í¶È
@@ -201,7 +201,7 @@ min-width£º×îÐ¡¿í¶È¿ÉÒÔÉìËõµ½Ò»¶¨³Ì¶ÈÖ®ºó²»ÔÙ½øÐÐÑ¹Ëõ£¬È»ºó²úÉú¹ö¶¯Ìõ¡£Í¬Ê±Ò²ÐèÒ
 max-width£º¹Ì¶¨¿íËõÐ¡µ½Ò»¶¨³Ì¶È»á²úÉú¹ö¶¯Ìõ£¬×î´ó¿í¿ÉÒÔÊ¹ÔªËØµ½´ï¹Ì¶¨ÖµÊ±¿ÉÒÔ×Ô¶¯ÉìËõ£¬²»²úÉú¹ö¶¯Ìõ
 
 min-height:×îÐ¡¸ß
-	ÐèÇó£ºµ±ÄÚÈÝÃ»ÓÐÄÇÃ´¶àµÄÊ±ºòÔªËØÓÐÒ»¸ö¹Ì¶¨¸ß¶È£¬µ±ÄÚÈÝ¶àÊ±¸ß¶È¿ÉÒÔËæ×ÅÄÚÈÝ¸Ä±ä
+?	ÐèÇó£ºµ±ÄÚÈÝÃ»ÓÐÄÇÃ´¶àµÄÊ±ºòÔªËØÓÐÒ»¸ö¹Ì¶¨¸ß¶È£¬µ±ÄÚÈÝ¶àÊ±¸ß¶È¿ÉÒÔËæ×ÅÄÚÈÝ¸Ä±ä
 
 max-height:×î´ó¸ß  ¿ªÊ¼Ê±×ÔÊÊÓ¦£¬³¬³öÊ±¿É¼ÓÈëÆäËü¶¯×÷  Èç³¬³öÊ±Ìí¼ÓÒ»¸ö²é¿´¸ü¶àµÄ°´Å¥
 
@@ -214,24 +214,24 @@ opacity:0£»
 text-indent:Ê×ÐÐËõ½øÎª¸º£¬¿ÉÈÃÎÄ×ÖÒþ²Ø
 
 Î±ÀàÑ¡ÔñÆ÷£º
-	link
-	visited
-	hover
-	active
+?	link
+?	visited
+?	hover
+?	active
 Î±ÔªËØÑ¡ÔñÆ÷
 div::after{       //Ïàµ±ÓÚdivÄÚ¶àÁËÒ»¸öÔªËØ£¬ÊôÓÚÄÚÁªÔªËØ
-     content:"";/*¿ÉÒÔÎª¿Õ£¬²»ÄÜ²»Ð´*/
+?     content:"";/*¿ÉÒÔÎª¿Õ£¬²»ÄÜ²»Ð´*/
 }
 div::before{
-     content:"";
+?     content:"";
 }
 
 p::first-letter{    //¶Ôp¶ÎÂäÄÚµÄµÚÒ»¸öÎÄ×ÖÉèÖÃ×ÖºÅ
-      font-size:30px;
+?      font-size:30px;
 }
 
 p::first-line{    //¶Ôp¶ÎÂäÄÚµÄµÚÒ»ÐÐÉèÖÃÑÕÉ«£¬ÒÔ»»ÐÐ·ûÎª½ç
-     color:red;
+?     color:red;
 }
 
 ¸øÍ¼Æ¬¼Ópadding£¬²»»á½«Í¼Æ¬³Å´ó£¬»á½«Í¼Æ¬µ½±ß¿òµÄ¾àÀë³Å´ó¡£

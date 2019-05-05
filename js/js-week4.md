@@ -564,21 +564,29 @@ console.log(a.say1 === b.say1);//true，都是原型上的函数，原型上的�
 
 * instanceof   运算符，判断当前对象是否是另一个对象的实例  
 
+  ~~~javascript
   console.log(tom instanceof Cat);//true  可以用于判断变量是否为数组或对象
+  ~~~
 
 * hasOwnProperty  判断对象上是否存在某个属性，且这个方法会过滤到原型上的属性
 
-  console.log(tom.hasOwnProperty("name"))//true，构造函数里的属性为true，原型上的方法为false
+  ~~~javascript
+  console.log(tom.hasOwnProperty("name"))
+  //true，构造函数里的属性为true，原型上的方法为false
+  ~~~
 
 * isPrototypeOf  检查对象是否存在于另一个对象的原型链上
 
+  ~~~javascript
   console.log(a.isPrototypeOf(b));//判断a是否在b的原型链上
+  ~~~
+
 
 ##### 原型链
 
 对象都有\_\_proto\_\_属性，指向其构造函数的prototype
 
-构造函数都有prototype属性，是一个指针，指向构造函数的原型对象。构造函数由Funtion()构造出来的，也有\_proto\_属性，指向Function的prototype
+构造函数都有prototype属性，是一个指针，指向构造函数的原型对象。构造函数由Funtion()构造出来的实例，也有\_proto\_属性，指向Function的prototype
 
 ~~~javascript
 function Cat(name){

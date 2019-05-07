@@ -11,6 +11,14 @@
 
 ​	cat readme.txt   //查看文件内容
 
+##### 新建文件
+
+​	touch 
+
+rm  删除文件或空文件夹
+
+rm -rf 强制删除文件，可删除非空文件夹
+
 ### git学习
 
 ##### git本地配置git账户
@@ -103,7 +111,7 @@ Git跟踪并管理的是修改，而非文件。每次修改，如果不用git a
 #####  恢复工作区删除的文件
 ​	git checkout -- test.txt   //恢复刚从工作区删除的test.txt文件
 
-关联github上的远程库
+##### 关联github上的远程库
 ​	git remote add origin git@github.com:SmallCuiCui/learngit.git   //git@github.com:SmallCuiCui/learngit.git是自己git账户上面的一个仓库的ssh
 
 把当前本地仓库的分支推送到远程库

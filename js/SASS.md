@@ -73,11 +73,11 @@ sass中导入其他sass文件，最后编译为一个css文件
 
 #### 属性嵌套
 
-部分属性存在相同的命名空间，如font-family,font-size,font-weight; background类，可以嵌套
+部分属性存在相同的命名空间，如font类，border类， background类，可以嵌套
 
 ~~~scss
 .main{
-    font:{
+    font:{//注意冒号
         family:fantasy;
         size:30px;
         weight:bold;
@@ -150,13 +150,16 @@ $name:top !default;
 
 是变量多维数据的存储方式，list类似于js数组，map类似于js中的对象
 
-* list
+###### list
 
 ~~~scss
 //定义
 $list:20px 30px 50px;
-$list:(20px 30px)(30px 50px)(54px 25px);//类似于多维数组
+$list1:(20px 30px)(30px 50px)(54px 20px 25px);//类似于多维数组
 
+margin:nth($list1,3);
+//编译后：上54px,下25px,左右20px
+margin:54px 20px 25px;
 nth($list,$n)//返回索引的项目
 set-nth($list,$n,$list)  //设置$list的第n个
 length($list)//回list的长度
@@ -167,7 +170,7 @@ zip($lists…)//个列表组合成多维列表
 index($list, $value)//一个列表中值的位置
 ~~~
 
-* map
+###### map
 
 ~~~scss
 //定义
@@ -199,7 +202,7 @@ div h2 {font-size: 40px; }
 div h3 {font-size: 30px; }
 ~~~
 
-#### @at-root跳出选择器嵌套
+#### @at-root跳出嵌套
 
 默认会跳出选择器嵌套，即变成最外层的样式.
 
@@ -282,6 +285,72 @@ without关键字取值有4个：rule(表示常规css，默认),all(表示所有)
 
 ~~~
 
+~~~
+
+#### @mixin
+
+定义一个样式包，在样式内部采用@include引入
+
+~~~scss
+//定义center，具有一个可传参数，不传默认为1000px
+@mixin center（$width:1000px){
+	margin-left:auto;
+	margin-right:auto;
+	width:$width;
+}
+.main{
+	@include center();
+}
+
+~~~
+
+#### 扩展继承extend
+
+继承同级元素的样式
+
+~~~scss
+.main{
+	a{
+		font-size:12px;
+    }
+    .ac{
+        @extend a;
+        color:red;
+    }
+}
+~~~
+
+#### darken颜色变暗
+
+~~~scss
+.main{
+	color:darken(nth($color,3),20%);
+}
+~~~
+
+#### 运算
+
+高宽magin等数值可以直接计算.注意乘除的单位必须一致
+
+~~~scss
+$basefont : 12px;
+.main{
+    width:100px/1000px * 100%;
+    height:100/800 * 100%;
+    font-size:
+}
+~~~
+
+#### 函数
+
+~~~scss
+$basefont:18px;
+@function pxToRem($px){
+	
+}
+.main{
+	font-size:pxTorem(12px);
+}
 ~~~
 
 

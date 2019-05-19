@@ -395,6 +395,19 @@ obj.say1();
   console.log(obj);//一个对象
   ~~~
 
+* 解构赋值与扩展运算符一起使用
+
+  ~~~javascript
+  var obj = {
+      name:"zhangsan",
+      age:18
+  }
+  var id = 15;
+  
+  obj = {...obj,id}
+  ~~~
+
+
 ##### 字符串处理
 
 * 字符串的Unicode表示 规则：\u+四位16进制

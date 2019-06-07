@@ -86,6 +86,8 @@
 
 * prop() 同attr  处理固有属性  如复选框的checked使用prop()，attr()方法获取为undefined
 
+  * 获取元素本身及其孩子元素的html `$(".test").prop("outerHTML");`
+
 * removerProp()  注意不要用此方法删除原生属性
 
 ##### css

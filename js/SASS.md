@@ -299,9 +299,9 @@ without关键字取值有4个：rule(表示常规css，默认),all(表示所有)
 	width:$width;
 }
 .main{
-	@include center();
+    //传参
+	@include center(200px);
 }
-
 ~~~
 
 #### 扩展继承extend
@@ -313,8 +313,12 @@ without关键字取值有4个：rule(表示常规css，默认),all(表示所有)
 	a{
 		font-size:12px;
     }
+    .top{
+        width:100px;
+    }
     .ac{
         @extend a;
+        @extend .top;
         color:red;
     }
 }
@@ -330,27 +334,43 @@ without关键字取值有4个：rule(表示常规css，默认),all(表示所有)
 
 #### 运算
 
-高宽magin等数值可以直接计算.注意乘除的单位必须一致
+高宽magin等数值可以直接计算.
 
 ~~~scss
+//注意乘除的单位必须一致
 $basefont : 12px;
 .main{
     width:100px/1000px * 100%;
-    height:100/800 * 100%;
-    font-size:
+    height:100/$basefont * 100%;
 }
 ~~~
 
 #### 函数
 
 ~~~scss
-$basefont:18px;
+$basefont:16px;
 @function pxToRem($px){
-	
+	@return $px / $basefont * 1rem;
 }
 .main{
 	font-size:pxTorem(12px);
 }
+~~~
+
+#### 判断
+
+~~~scss
+$isbig:false;
+//判断
+div{
+    @if $isbig === true{
+		width:200px;
+    }@else{
+        width:400px;
+    }
+}
+//三目运算
+if()
 ~~~
 
 

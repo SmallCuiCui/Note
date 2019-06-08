@@ -1,16 +1,16 @@
-### node相关
+## node相关
 
 #### nvm管理node
 
-##### nvm
+###### nvm
 
 node版本管理器：安装管理node，用于多个node版本的切换。
 
-##### 下载安装
+###### 下载安装
 
 github搜索nvm，下载安装，注意路径中不要出现中文及空格
 
-##### 常用命令
+###### 常用命令
 
 * `nvm -v`  查看nvm版本，以及nvm命令
 
@@ -62,7 +62,6 @@ JavaScript包管理工具
 
 * `npm root -g`查看npm全局包安装位置
 * `npm config set prefix  ""`  设置npm全局包安装的位置(node_modules文件夹)，然后需要将该路径添加到环境变量中
-
 * `npm install xxx ` 安装依赖包
 * `npm init -y`  初始化一个package.json文件，加上-y就会默认生成该文件
 
@@ -74,7 +73,7 @@ nodejs的规范，之前使用的require满足AMD规范
 
 * 使用npm安装的依赖包即采用require引入，如前面用到的gulp工具即是；
 
-##### 模块化
+###### 模块化
 
 * commanjs模块规范主要分为：模块定义，模块标识，模块引用
 * 一个文件就是一个模块，拥有单独的作用域
@@ -84,7 +83,7 @@ nodejs的规范，之前使用的require满足AMD规范
 
 * 代码运行在该模块内，不会污染全局，模块可以多次加载，但是仅在第一次加载时运行一次，然后运行结果被缓存，之后在加载就从缓存中读取结果。
 
-##### 模块定义/模块标识
+###### 模块定义/模块标识
 
 ~~~javascript
 //dataBase.js文件
@@ -98,7 +97,7 @@ function saveData(){
 }
 ~~~
 
-##### 模块引入
+###### 模块引入
 
 ~~~javascript
 const dataBase = require("./dataBase");//引入模块，并将生成对象指向dataBase
@@ -112,7 +111,14 @@ dataBase.saveData();//调用该模块下的方法
   * 使用命令`tskill node`  
   * Ctrl+C结束当前进程
 
-### node核心模块
+###### nodemon
+
+node自动重启工具，代替node命令执行。当文件修改之后无需停掉当前服务重新开启，它会自动重启。
+
+* 安装 `npm install -g nodemon`
+* 运行  `nodemon index`采用nodemon运行index
+
+## node核心模块
 
 使用之前需要引入
 
@@ -126,13 +132,48 @@ const http = require('http'),
 
 #### HTTP
 
+~~~javascript
+const http = requier('http);
+http.createServer((req,resp)=>{
+	//解决中文乱码
+	resp.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+    //请求url，从中获取到请求文件是什么。req.url = "/favicon.ico"谷歌浏览器默认的请求网页图标
+    console.log(req.url);
+    res.write();//返回给前端数据
+    resp.end();//结束服务，里面可以传一个数据
+}).listen(8080);//监听端口
+~~~
+
 #### fs文件系统
+
+~~~javascript
+//读取资源
+fs.readFile([path],(err,data)=>{
+    if(err) throw err;
+    else fs.write(data);
+})
+~~~
+
+
+
+读取文件
+
+~~~javascript
+const fs = require('fs);
+fs.readFile("./static/index.html",(err,data)=>{
+	if(err) throw err;
+    // 只有一个数据返回时可直接在end()里面传递。类似于resp.write();
+    else resp.end(data);
+})
+~~~
+
+
 
 #### path
 
-，常用方法：
+常用方法：
 
-* path.resolve([...paths])  合并路径，采用字符串拼接不好
+* path.resolve([...paths])  合并路径，直接采用字符串拼接不好
 
   `/`开头表示绝对路径，`./`表示当前路径,`../`表示上一级
 
@@ -166,5 +207,58 @@ const http = require('http'),
   //   name: 'file' }
   ~~~
 
+## Express框架
+
+基于node平台，快速，开放，极简的Web开发框架
+
+#### 安装
+
+* 全局安装` npm install express -g`
+* `mkdir myapp`新建文件夹，并cd到给文件夹
+* `npm init -y`初始化项目的package.json文件
+* `npm install express --save`   在myapp文件下安装express并保存到依赖列表
+
+#### hello world
+
+~~~javascript
+const express = require('express');
+const app = express();
+
+app.get('/',(req,resp)=>{
+	res.send("hello world");
+})
+
+app.listen(3000,()=>{
+    console.log("app demo 已经监听在3000端口")
+})
+~~~
+
+#### express 应用生成器
+
+* `npm install express-generator -g `全局安装生成器工具
+
+* `express -h`查看命令行参数
+
+* 使用express创建应用`express --viw=ejs exApp`其中参数ejs是一种模板引擎
+
+* `cd exApp`进入项目
+
+* `npm install`安装依赖，express创建的应用都有一些需要的依赖，如http等
+
+* `port=8090 npm start`启动项目，端口参数可选，不设置`npm start`的话默认为3000端口
+
+  ~~~javascript
+  //package.json文件下的scripts，可在里面自定义一些命令,
+  //如上面执行的start命令，就是执行一个www文件
+  "scripts": {
+      //运行 npm start
+      "start": "node ./bin/www"，
+      //自定义命令，采用npm run st运行
+      "st":"nodemon ./bin/www"
+    }
   
+  //项目执行过程
+  //执行start命令->本质执行www文件 =>www文件创建了服务并监听 =>前端传来请求 =>从www到引入app模块 =>app模块引入了很多依赖的模块、使用中间件、配置等 =>根据请求url进入对应路由 =>routers下的对应路由模块 =>路由中根据url返回对应资源
+  ~~~
+
 

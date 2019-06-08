@@ -132,7 +132,18 @@ const http = require('http'),
 
 #### HTTP
 
+* server类
+  * server.on()  监听服务下的事件，如close,connect,connection,request
+  * server.listen(8080)  设置端口
+  * server.close([callback])
 
+* response类
+
+  * response.end([data],encoding,[,callback])  可在end中直接传一个要返回给前端的数据。
+
+    这个数据可用文件系统fs.readFile(..)来获取到。服务开启后必须有response.end();
+
+  * response.write(chunk[,encoding]\[,callback])  参数一为字符串，发送给前端的字符串
 
 ~~~javascript
 const http = requier('http);
@@ -185,6 +196,13 @@ fs.readFile("./static/index.html",(err,data)=>{
   path.resolve("/foo/bar","./dev");// foo/bar/dev
   ~~~~
 
+* path.join([paths])
+
+  ~~~javascript
+path.join(__dirname,"../public/list.html");
+  //从当前目录返回上一级目录，找Public下的list.html
+  ~~~
+  
 * path.format(pathObject)  根据pathOject对象返回路径字符串
 
   pathObject = {
@@ -223,6 +241,7 @@ fs.readFile("./static/index.html",(err,data)=>{
 #### hello world
 
 ~~~javascript
+//myapp下的main.js文件   运行：node main
 const express = require('express');
 const app = express();
 
@@ -264,6 +283,19 @@ app.listen(3000,()=>{
   ~~~
 
 #### ejs模板引擎
+
+## MongoDB
+
+是一个非关系型的数据库，数据存储是以类似于json文件格式的文档进行存储，读取到的数据是一个对象
+
+* 本地安装，官网下载4.1.3版本安装(容易成功)，配置环境变量.....MongoDB/server/3.1.4/bin
+* 设置数据库存放位置
+  * 在安装下的.....MongoDB/server/3.1.4/bin目录下打开命令行
+  * 命令`mongod --dbpath D:/db`  设置数据库存放位置D:/db
+
+* obo 3T可视化的MongoDB数据库管理
+
+
 
 
 

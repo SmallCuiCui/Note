@@ -132,6 +132,8 @@ const http = require('http'),
 
 #### HTTP
 
+
+
 ~~~javascript
 const http = requier('http);
 http.createServer((req,resp)=>{
@@ -260,5 +262,12 @@ app.listen(3000,()=>{
   //项目执行过程
   //执行start命令->本质执行www文件 =>www文件创建了服务并监听 =>前端传来请求 =>从www到引入app模块 =>app模块引入了很多依赖的模块、使用中间件、配置等 =>根据请求url进入对应路由 =>routers下的对应路由模块 =>路由中根据url返回对应资源
   ~~~
+
+#### ejs模板引擎
+
+
+
+
+
 
 

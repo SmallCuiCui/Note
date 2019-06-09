@@ -256,6 +256,8 @@ app.listen(3000,()=>{
 
 #### express 应用生成器
 
+通过应用生成器工具 `express-generator` 可以快速创建一个应用的骨架。
+
 * `npm install express-generator -g `全局安装生成器工具
 
 * `express -h`查看命令行参数
@@ -278,25 +280,336 @@ app.listen(3000,()=>{
       "st":"nodemon ./bin/www"
     }
   
+  //www文件，创建服务，处理端口，引入app模块
+  //app.js文件 引入各类模块，设置模板引擎的文件(view)，使用应用需要的中间件
+  //路由文件模块，处理请求，并返回给前端数据
+  //public文件夹：放置静态资源的文件夹
+  //views文件夹：放置模板的文件夹
+  
+  
   //项目执行过程
   //执行start命令->本质执行www文件 =>www文件创建了服务并监听 =>前端传来请求 =>从www到引入app模块 =>app模块引入了很多依赖的模块、使用中间件、配置等 =>根据请求url进入对应路由 =>routers下的对应路由模块 =>路由中根据url返回对应资源
   ~~~
 
+#### express框架运用
+
+###### 路由
+
+确定应用程序如何响应客户机的特定端点请求，该请求可以是一个路径，也可以是一个http请求方法
+
+* app.METHOD(PATH,HANDLER)
+
+~~~javascript
+//使用规则：app.METHOD(PATH,HANDLER)
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+    //res.end()  res.json()  res.render()   res.send()  res.sendFile()
+})
+app.get('/', function (req, res) {},function(){})
+app.get('/', [fun1,fun2,fun3])
+~~~
+
+* app.route()
+
+  为路由路创建处理程序
+
+  ~~~javascript
+  app.route('/book')
+    .get(function (req, res) {
+      res.send('Get a random book')
+    })
+    .post(function (req, res) {
+      res.send('Add a book')
+    })
+  ~~~
+
+* express.Router()
+
+  定义一个路由模块，在app.use()中使用
+
+  ~~~javascript
+  //定义 index.js
+  var express = require('express);
+  var router = express.router();
+  router.use(...);
+  router.get("/",function(req,resp){
+      res.send("hello");
+  })
+  //暴露此模块
+  module.expres = router;
+  ~~~
+
+  ~~~javascript
+  //加载路由模块到app应用
+  var app = express();
+  var indexRouter = require("./index");
+  
+  app.use("/",indexRouter)
+  ~~~
+
+###### 中间件
+
+中间件函数能够访问请求对象，相应对象，以及应用程序的请求/响应循环中的下一个中间件函数。下一个中间件函数使用next()的变量来表示。
+
+中间件有应用层中间件，路由层中间件，错误处理中间件，内置中间件，第三方中间件。
+
+~~~javascript
+//应用层
+var app = express();
+//无挂载，应用程序每收到请求时执行
+app.use(function(req,resp,next){
+    console.log("111");
+    //当前中间件函数没有结束请求响应周期，则必须调用Next（）将控制权传递给下一个中间件函数
+    next();
+});
+app.use("/",function(req,resp,next){});//在/路径中为任何类型的 HTTP 请求执行此函数。
+app.get("/",function(req,resp,next){});//处理针对 / 路径的 GET 请求。
+
+//路由层
+var router = express.Router();
+router.use(function (req, res, next) {
+  console.log('Time:', Date.now());
+  next();
+});
+app.use('/', router);
+
+//错误处理中间件，处理函数有四个变量
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+~~~
+
+#### 常用API
+
+###### express()
+
+* express.json()  express内置中间件，处理json格式数据的中间件
+
+* express.static(root)  root参数指定为静态资源提供服务的根目录
+
+  ~~~javascript
+  //设置静态资源的获取在当前目录找过去的public文件夹下
+  app.use(express.static(path.join(__dirname, 'public')));
+  ~~~
+
+* express.router()  创建新的router对象
+
+* express.urlencoded() 解析url的中间件
+
+###### application
+
+* app.all(path,callback[,callback])  类似app.METHOD()方法，但它匹配所有http请求
+
+* app.lesten(port) 将连接绑定并监听到特定端口
+
+* app.METHOD()  路由HTTP请求，其中method是请求http的方法，如get，post，put等
+
+* app.get(path,callback[,callback]) 使用指定的回调函数将HTTP GET请求路由到指定的路径
+
+* app.post(path,callback[,callback..])使用指定的回调函数将HTTP POST请求路由到指定的路径
+
+* app.put(path,..)使用指定的回调函数将HTTP PUT请求路由到指定的路径
+
+* app.render() 返回根据回调函数渲染的HTML，类似于resp.render(),但它不能将结果返回给客户端
+
+* app.route() 返回一个路由实例
+
+* app.set(name,value)  name值可以是配置服务器的行为的特殊名称值，如views,视图文件的目录
+
+  ~~~javascript
+  app.set('views', path.join(__dirname, 'views'));
+  // 设置模板引擎为ejs
+  app.set('view engine', 'ejs');
+  ~~~
+
+* app.use([path,]callback) 指定一个或多个中间件到指定路径，当请求路径匹配时将执行中间件函数，未指定路径时将响应所有路径请求。
+
+* app.param() 向路由参数添加回调触发器
+
+###### request	
+
+* req.url  获取请求路径，根据路径匹配对应路由
+
+###### response
+
+* resp.end([data],[,encoding])  结束响应进程
+
+* resp.download() 
+
+* resp.get()
+
+* resp.json()
+
+* resp.render() 渲染模板HTML并将结果发送到客户端
+
+  ~~~javascript
+  /* GET home page. */
+  router.get('/', function(req, resp, next) {
+  	// 此处的index是view下的index.ejs文件，在app.js中设置过此路径
+  	//app.set('views', path.join(__dirname, 'views'));
+  	// 渲染index模板引擎，并且将渲染结果返回给前端。区别于之前的前端渲染方法
+    resp.render('index', { title: 'nihao' });
+  });
+  ~~~
+
+* resp.send() 传送http响应内容，可以是一个字符串，对象，数组
+
+* resp.sendFile(path,[,callback])  除非在选项对象中设置了根选项，否则path必须是文件的绝对路径。
+
+  ~~~javascript
+  let filePath = path.join(__dirname,'../public/list.html');
+  resp.sendFile(filePath);
+  ~~~
+
+* resp.status(code) 设置http状态的处理
+
+  ~~~javascript
+  res.status(400).send('Bad Request');
+  ~~~
+
+###### router
+
+* router.all()
+* router.METHOD()
+* router.param()
+* router.route()
+* router.use()
+
+
+
 #### ejs模板引擎
 
-## MongoDB
+###### 用法
+
+* 输出数据到模板
+
+~~~ejs
+<%=
+	<h2>user</h2>
+%>
+~~~
+
+* <% 脚本标签，用于控制，无输出，其中可以写语句
+
+~~~ejs
+<% if (user) { %>
+  <h2><%= user.name %></h2>
+<% } %>
+~~~
+
+* 输出非转义数据到模板
+
+~~~
+<%-
+	<h2>user</h2>
+%>
+~~~
+
+* 自定义分隔符
+
+  ~~~ejs
+  // 单个模板文件
+  ejs.render('<?= users.join(" | "); ?>', {users: users},{delimiter: '?'});
+  
+  // 全局
+  ejs.delimiter = '$';
+  ejs.render('<$= users.join(" | "); $>', {users: users});
+  ~~~
+
+* include 将模板路径中的模板片段包含进来
+
+  ~~~ejs
+  <ul>
+    <% users.forEach(function(user){ %>
+      <%- include('user/show', {user: user}); %>
+    <% }); %>
+  </ul>
+  ~~~
+
+## MongoDB数据库
 
 是一个非关系型的数据库，数据存储是以类似于json文件格式的文档进行存储，读取到的数据是一个对象
 
 * 本地安装，官网下载4.1.3版本安装(容易成功)，配置环境变量.....MongoDB/server/3.1.4/bin
 * 设置数据库存放位置
   * 在安装下的.....MongoDB/server/3.1.4/bin目录下打开命令行
-  * 命令`mongod --dbpath D:/db`  设置数据库存放位置D:/db
+  * 命令`mongod --dbpath D:/dbFile`  设置数据库存放位置D:/db
+* Robo 3T可视化的MongoDB数据库管理
+* 对照MySQL数据库
 
-* obo 3T可视化的MongoDB数据库管理
+| MySQL    | MongoDB    |
+| -------- | ---------- |
+| database | database   |
+| table    | collection |
+| col(列)  | files      |
+| row(行)  | documents  |
 
+#### 原生用法
 
+* 插入一条  `db.collection.insertOne({})`   collection类似于数据库的表
+* 插入多条  `db.collection.insertMany([{},{}])`
+* 查询 `db.collection.find( {"username":"张三"} )`
 
+#### mongoose
+
+基于nodejs来操作mogodb的对象模型
+
+* 安装`npm install mongoose`
+
+* 引入/连接
+
+  ~~~javascript
+  //连接本地数据库服务器，连接test数据库
+  var mongoose = require('mongoose');
+  mongoose.connect('mongodb://localhost/test',{useNewUrlParser:true});
+  ~~~
+
+* 得到连接实例/监听
+
+  ~~~javascript
+  //得到连接实例
+  var db = mongoose.connection;
+  //处理连接错误输出
+  db.on("error",console.error.bind(console,'connection error:'));
+  //监听一次打开事件
+  db.once('open',function(){
+  	console.log("we are connected");
+  })
+  ~~~
+
+* Schema
+
+  ~~~javascript
+  //schema把非关系型数据库装换为关系型结构
+  var userSchema = new mongoose.Schema({
+    name: String,
+    password:String
+  });
+  //根据userSchema得到一个模型，相当于关系型数据库中的表
+  let users = mongoose.model("users",userSchema);
+  //根据users模型得到一个实例，相当于表中的一条数据
+  let kitty = new users({username:"kitty",password："123"})
+  ~~~
+
+* 实例.save()  使用实例来存
+
+  ~~~javascript
+  //存数据，异步方法。将实例存进MongoDB中
+  kitty.save(function(err,kitty){
+  	if(err) return console.error(err);
+  	else console.log("succ);
+  })
+  ~~~
+
+* model().find()  使用模型在查询
+
+  ~~~
+  users.find((err,suer)=>{
+  	if(err) return console.error(err);
+  	console.log(user);
+  })
+  ~~~
 
 
 

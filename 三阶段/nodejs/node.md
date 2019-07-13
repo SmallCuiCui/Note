@@ -167,9 +167,7 @@ fs.readFile([path],(err,data)=>{
 })
 ~~~
 
-
-
-读取文件
+* 读取文件
 
 ~~~javascript
 const fs = require('fs);
@@ -180,7 +178,18 @@ fs.readFile("./static/index.html",(err,data)=>{
 })
 ~~~
 
+* 写文件 向文件夹中写文件进去，文件存在则会替换
 
+  fs.writeFile(file, data[, options], callback)
+
+~~~javascript
+const data = new Uint8Array(Buffer.from('Hello Node.js'));
+//将data数据写入到message.txt中
+fs.writeFile('message.txt', data, (err) => {
+  if (err) throw err;
+  console.log('The file has been saved!');
+});
+~~~
 
 #### path
 
@@ -226,6 +235,12 @@ path.join(__dirname,"../public/list.html");
   //   ext: '.txt',
   //   name: 'file' }
   ~~~
+
+## node.js中间件
+
+中间件需要使用npm安装之后再require，而核心模块只需要require就可以使用
+
+
 
 ## Express框架
 
@@ -351,6 +366,8 @@ app.get('/', [fun1,fun2,fun3])
 
 中间件函数能够访问请求对象，相应对象，以及应用程序的请求/响应循环中的下一个中间件函数。下一个中间件函数使用next()的变量来表示。
 
+中间件的使用顺序会影响页面渲染效果
+
 中间件有应用层中间件，路由层中间件，错误处理中间件，内置中间件，第三方中间件。
 
 ~~~javascript
@@ -378,6 +395,86 @@ app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
+~~~
+
+###### 静态资源
+
+提供图片，js，HTML，css等静态资源，使用Express 中的 `express.static` 内置中间件函数
+
+~~~javascript
+// 处理静态文件的中间件（静态资源从public中获取)
+// 此处访问静态资源的时候需要将资源的文件后缀带上，不然应该会识别成路径进行路由分配
+app.use(express.static(path.join(__dirname, 'public')));
+
+// 此静态资源可通过带有/routes前缀来进行访问
+app.use('/routes',express.static(path.join(__dirname, 'routes')));
+~~~
+
+###### multer-文件上传
+
+处理multipart/form-data类型的表单数据，主要用于文件上传
+
+安装`npm install multer --save`  
+
+会添加`body` 对象以及`file`或`files`对象到express的request对象中，body包含表单文本域信息，file/files包含对象表单上传的文件信息
+
+```javascript
+const express =require('express');
+const app = express();
+const fs = require('fs');
+var bodyParser = require('body-parser');// 编码解析
+var multer = require('multer');
+
+// 配置静态文件的获取位置
+app.use('/public',express.static('public'));
+// 创建编码解析，post方法需要
+app.use(bodyParser.urlencoded({extended:false}));
+// dest参数设置文件保存的位置，multer()后面的函数array()设置语序上传的文件
+app.use(multer({dest:'/static/'}).array('image'));
+
+app.get('/form.html',function(req,resp){
+	resp.sendFile(__dirname+"/public/form.html");
+})
+
+app.post('/file_upload',function(req,resp){
+	// 上传的文件信息，此files是multer添加到请求对象上的，包含对象表单上传的文件信息。
+	console.log(req.files[0]);
+	/*{ fieldname: 'image',
+	  originalname: '1.jpg',
+	  encoding: '7bit',
+	  mimetype: 'image/jpeg',
+	  destination: '/static/',
+	  filename: '470e018728f94659e4c4a8e4dd41ac7b',
+	  path: '\\static\\470e018728f94659e4c4a8e4dd41ac7b',
+	  size: 25117 }*/
+
+// 拼接保存路径
+	var des_file = __dirname + '/static/' + req.files[0].originalname;
+	fs.readFile( req.files[0].path,function(err,data){
+		
+		fs.writeFile(des_file, data, function(err){
+			if(err){
+				console.log( err );
+			}else{
+				response = {
+					message:'File uploaded successfully',
+					filename:req.files[0].originalname
+				}
+			}
+			resp.end( JSON.stringify( response ));
+		})
+	})
+})
+
+var server = app.listen(8081)
+```
+
+~~~html
+<!--表单内容-->
+<form action="/file_upload" method="post" enctype="multipart/form-data">
+    <p><input type="file" name="image" size="50"></p>
+    <input type="submit" value="上传文件" name="">
+</form>
 ~~~
 
 #### 常用API
@@ -476,11 +573,9 @@ app.use(function(err, req, res, next) {
 * router.route()
 * router.use()
 
+## ejs模板引擎
 
-
-#### ejs模板引擎
-
-###### 用法
+#### 用法
 
 * 输出数据到模板
 
@@ -526,93 +621,5 @@ app.use(function(err, req, res, next) {
     <% }); %>
   </ul>
   ~~~
-
-## MongoDB数据库
-
-是一个非关系型的数据库，数据存储是以类似于json文件格式的文档进行存储，读取到的数据是一个对象
-
-* 本地安装，官网下载4.1.3版本安装(容易成功)，配置环境变量.....MongoDB/server/3.1.4/bin
-* 设置数据库存放位置
-  * 在安装下的.....MongoDB/server/3.1.4/bin目录下打开命令行
-  * 命令`mongod --dbpath D:/dbFile`  设置数据库存放位置D:/db
-* Robo 3T可视化的MongoDB数据库管理
-* 对照MySQL数据库
-
-| MySQL    | MongoDB    |
-| -------- | ---------- |
-| database | database   |
-| table    | collection |
-| col(列)  | files      |
-| row(行)  | documents  |
-
-#### 原生用法
-
-* 插入一条  `db.collection.insertOne({})`   collection类似于数据库的表
-* 插入多条  `db.collection.insertMany([{},{}])`
-* 查询 `db.collection.find( {"username":"张三"} )`
-
-#### mongoose
-
-基于nodejs来操作mogodb的对象模型
-
-* 安装`npm install mongoose`
-
-* 引入/连接
-
-  ~~~javascript
-  //连接本地数据库服务器，连接test数据库
-  var mongoose = require('mongoose');
-  mongoose.connect('mongodb://localhost/test',{useNewUrlParser:true});
-  ~~~
-
-* 得到连接实例/监听
-
-  ~~~javascript
-  //得到连接实例
-  var db = mongoose.connection;
-  //处理连接错误输出
-  db.on("error",console.error.bind(console,'connection error:'));
-  //监听一次打开事件
-  db.once('open',function(){
-  	console.log("we are connected");
-  })
-  ~~~
-
-* Schema
-
-  ~~~javascript
-  //schema把非关系型数据库装换为关系型结构
-  var userSchema = new mongoose.Schema({
-    name: String,
-    password:String
-  });
-  //根据userSchema得到一个模型，相当于关系型数据库中的表
-  let users = mongoose.model("users",userSchema);
-  //根据users模型得到一个实例，相当于表中的一条数据
-  let kitty = new users({username:"kitty",password："123"})
-  ~~~
-
-* 实例.save()  使用实例来存
-
-  ~~~javascript
-  //存数据，异步方法。将实例存进MongoDB中
-  kitty.save(function(err,kitty){
-  	if(err) return console.error(err);
-  	else console.log("succ);
-  })
-  ~~~
-
-* model().find()  使用模型在查询
-
-  ~~~
-  users.find((err,suer)=>{
-  	if(err) return console.error(err);
-  	console.log(user);
-  })
-  ~~~
-
-
-
-
 
 

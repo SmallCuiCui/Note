@@ -29,7 +29,7 @@ rm -rf 强制删除文件，可删除非空文件夹
 
 git本地安装之后配置自己的账户
 ​	git config --global user.name "..."
-​	git configr --global user.email "..."
+​	git config --global user.email "..."
 ​	-global即为全局，表示本台机器所有仓库都使用这个配置，但也可以为某个仓库使用不同的用户名及邮箱
 
 ##### 本地创建仓库
@@ -66,9 +66,10 @@ git本地安装之后配置自己的账户
 ##### 掌握文件修改内容
 ​	git diff   //详细告诉被修改过的文件的修改内容，包括修改前与后的对比
 
-##### 查看提交历史记录 
+##### 查看提交历史 
 ​	当前版本到最远的一次版本，不包括回退过的版本，即不包括HEAD后的版本
-​	git log  //显示最近到最远的提交日志记录，包括版本号，作者，时间，描述
+​	git log  //显示最近到最远的提交日志记录，包括版本号，作者，时间，描述  按q退出
+
 ​	git log --pretty=oneline  //也是查看记录，但是信息输出更简洁，包括版本号和描述
 ​	了解：commit参数后面的一长串字符串是指版本号，每一次提交一个版本号，方便用于查看，回退到指定版本
 
@@ -79,6 +80,20 @@ git本地安装之后配置自己的账户
 ​	git reset --hard HEAD^   //回退到上一个版本
 ​	git reset --hard 12d5d  //回退到指定版本，12d5d为版本号的前几位，只需要前几位即可。可倒退或回到任意版本，只要知道版本号即可
 
+###### add之前
+
+`git checkout reade.md`使用git checkout 加文件名
+
+###### add之后commit之前
+
+`git reset HEAD`撤销刚才的add，查看状态变成modified，之前状态是为提交状态
+
+###### commit之后push之前
+
+先查看提交日志git log
+
+然后`git reset --hard xxx`  其中xxx为版本号
+
 ##### 查看git命令历史
 ​	git reflog  //即使电脑关机重启也是存在的，可用于查看回退过的版本号记录。
 
@@ -86,6 +101,10 @@ git本地安装之后配置自己的账户
 
 ：即删掉.git文件即可
 ​	命令行方式：rm -rf .git（需要cd到该库文件夹下）
+
+##### 删除暂存区文件
+
+`git rm --cached  文件名`
 
 ##### git概念
 ​	工作区		版本库(暂存区+分支)	暂存区		     分支					HEAD(指向分支的指针)
@@ -112,6 +131,7 @@ Git跟踪并管理的是修改，而非文件。每次修改，如果不用git a
 ​	单纯把文件夹下的文件删除时，git会察觉到工作区和版本库不一致
 ​	git rm test.txt  //删除已经提交到分支上的test.txt文件
 ​	git commit -m "remove test.txt"  //删除后需要提交
+
 #####  恢复工作区删除的文件
 ​	git checkout -- test.txt   //恢复刚从工作区删除的test.txt文件
 
@@ -137,8 +157,12 @@ Git跟踪并管理的是修改，而非文件。每次修改，如果不用git a
   ​	git checkout -b dev   //创建dev新分支，-b表示切换到新创建的dev分支
   ​		相当于先创建：git branch dev(此命令仅创建分支，未切换)，然后切换：git checkout dev
 
-* 创建新分支
+* 创建新分支，当前分支下新建的分支是基于该分支的
   ​	git branch dev  //创建dev分支，此命令仅创建分支，未切换
+
+* 分支推送到远程
+
+  ​	git push orign dev
 
 * 切换分支
   ​	git checkout dev  //将当前分支切换到dev分支，即将HEAD指针指向dev
@@ -170,6 +194,16 @@ Git跟踪并管理的是修改，而非文件。每次修改，如果不用git a
 ​	此时合并会提示有冲突无法合并，使用git status可以知道，直接cat查看文件内容可以直接知道不同点
 ​	解决办法：修改其中一个分支的文件与另一分支一致，然后add,commit,这样就可以合并了
 
+* 切换到原dev，pull下新的dev
+* 变基-回到自己分支，git rebase -dev，查看并解决冲突
+* git add -A解决一次冲突之后先add一下
+* git rebase --continue 继续解决冲突
+* 重复上两步直到解决完所有冲突，会出现Applaying
+* git status查看还有没有冲突，没有
+* 再pull下来线上提交的，解决与本地冲突，保留当前这次
+* git add -A，git commit -m ，git push 提交到远程
+* 要是还有冲突，使用git push -f
+
 ##### 分支管理策略
 ​	快速合并方式(Fast forward)方式，在删除分支之后会丢掉分支信息，分支历史上就看不出合并
 ​	git merge --no-ff -m "merge with no-ff" dev   //强制禁用快模式(--no-ff)的合并方式，
@@ -199,6 +233,7 @@ Git跟踪并管理的是修改，而非文件。每次修改，如果不用git a
 ​		git pull失败的话(no tracking information)：使用git branch --set-upstream-to=origin/dev dev   //先将本地dev与远程dev分支进行链接
 ​		git pull  //相当于把远程的最新提交与本地试图合并,存在冲突，手动解决冲突，然后再推送
 ​		git push origin dev  //解决冲突之后再推送
-​	
-​		
-​	
+
+### 密钥对
+
+执行`ssh-keygen`  创建密钥对，路径的时候添加下后缀，避免多个密钥全部放在一个目录下

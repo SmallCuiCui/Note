@@ -184,7 +184,7 @@ $("div.mydiv")
 
 ##### 层级
 
-* 选择所有后代   给定祖先元素选择所有后代     $("form input")//选择form子孙下的所有input
+* 选择所有后代   给定祖先元素选择所有后代     $("form input") //选择form子孙下的所有input
 * 选择
 
 ### 事件
@@ -204,4 +204,33 @@ $("div.mydiv")
 ##### .trigger()执行事件
 
 .trigger(eventType)  执行匹配元素上绑定的事件eventType
+
+##### 阻止冒泡/默认行为
+
+* event.stopPropagation();  阻止冒泡
+
+* return false; 阻止冒泡与默认事件
+
+  ~~~javascript
+   $("#div1").mousedown(function(event){
+   	event.stopPropagation();
+   });
+   
+   $("#div1").mousedown(function(event){
+    　　return false;
+    });
+  ~~~
+
+
+### 数组操作
+
+##### 添加/删除
+
+1.array.push() :在数组尾部添加新的元素，并返回新的数组长度。
+
+2.array.unshift() :在数组头部添加新的元素，并返回新的数组长度。[听说IE浏览器不支持]
+
+3.array.pop() :删除并返回数组最后一个元素。
+
+4.array.shift() :删除并返回数组第一个元素。
 

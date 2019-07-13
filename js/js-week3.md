@@ -4,8 +4,8 @@ BOM  DOM  事件
 
 ##### table注意点
 
-* 在html中写的表格，渲染到浏览器会自动添加tbody和thead。使用js创建表格则不会出现
-  ​	平时使用js创建表格时，注意加上thead,tbody。避免出现删除查找时的bug
+* 在html中写的表格，渲染到浏览器会自动添加tbody和thead。
+* 平时使用js创建表格时，注意加上thead,tbody。避免出现删除查找时的bug
 
 ##### mouseenter与mouseover差别
 
@@ -70,13 +70,13 @@ window.location.search;//请求参数，？号后面的内容
 
 ###### navigator
 
-~~~
+~~~javascript
 navigator.appName;//获取当前浏览器的名称
 navigator.appVersion;//获取当前浏览器的版本号
 navigator.platform;//返回当前计算机的操作系统
 ~~~
 
-以上属性逐渐被抛弃，取而代之的新属性navigator.userAgent  //返回浏览器的信息
+以上属性逐渐被抛弃，取而代之的新属性`navigator.userAgent`  //返回浏览器的信息
 
 ###### history
 
@@ -181,11 +181,11 @@ ES5选择器：也是元素的方法，相当于给选择加了限制条件
 
 ：元素的方法，不能使用document调用。
 
-* element.attributes  //获取所有该节点的信息，只做获取。是个属性，不是方法，
+* element.attributes  // 属性 获取所有该节点的信息，只做获取。不是方法，
 
-* element.getAttribute()  //自定义属性必须用getAttribute()和setAttribute()
+* element.getAttribute('..')  //自定义属性必须用getAttribute()和setAttribute()
 
-* element.setAttribute(,)  //添加指定的属性并为其赋指定的值(值为字符串类型)，审查元素时会显示在DOM元素上。IE8以下存在兼容问
+* element.setAttribute('..','..')  //添加指定的属性并为其赋指定的值(值为字符串类型)，审查元素时会显示在DOM元素上。IE8以下存在兼容问
 
 * element.removeAttribute()  //删除属性
 
@@ -215,20 +215,29 @@ getComputedStyle(ele,false)[attr]  //false的意思是可以获取伪元素
 
 ##### 节点(所有)
 
-：html中的所有内容都是节点，包括标签，文本，注释等
+html中的所有内容都是节点，包括标签，文本，注释等。节点类型包括，元素节点，文本节点，属性节点
 
-节点类型包括，元素节点，文本节点，属性节点
+节点操作：元素的方法
 
-* 节点操作：元素的方法
-  ​	childNodes  //获取元素的所有节点，是一个数组，里面包括文本节点，元素节点，注释节点等所有节点
-  ​	nodeValue  //获取*文本节点*的文字内容，并且可以赋值，会替换原内容。可获取属性节点的值
-  ​	box.childNodes[0].nodevalue = '<strong>abc</strong>' ;//文本节点的属性，其他类型节点使用没效果。不会被解析成标签，会将标签名转义为字符串直接输出
-  ​				box.innerText=  '<strong>abc</strong>' ;不会解析标签，替换box节点下的所有节点
-  ​				box.innerHTML=  '<strong>abc</strong>' ;//标签会被解析，替换box节点下的所有节点（非w3c）
-  ​				box.outerHTML=  '<strong>abc</strong>' 会解析，但包含自己一起被替换（非w3c）
-  ​	nodeType   //节点类型，返回值为数字
-  ​			文本节点,3，元素节点：1，注释：8，属性节点：2，document节点：9
-  ​	nodeName  //返回节点名称（#text(文本节点)，#comment(注释)，标签名，属性名(document)）
+* childNodes  //获取元素的所有节点，是一个数组，里面包括文本节点，元素节点，注释节点等所有节点
+
+* nodeValue  //获取*文本节点*的文字内容，并且可以赋值，会替换原内容。可获取属性节点的值
+
+* box.childNodes[0].nodevalue = '<strong>abc</strong>' ;
+
+  //文本节点的属性，其他类型节点使用没效果。不会被解析成标签，会将标签名转义为字符串直接输出
+
+* box.innerText=  '<strong>abc</strong>' ;不会解析标签，替换box节点下的所有节点
+
+* box.innerHTML=  '<strong>abc</strong>' ;//标签会被解析，替换box节点下的所有节点（非w3c）
+
+* box.outerHTML=  '<strong>abc</strong>' 会解析，但包含自己一起被替换（非w3c）
+
+* nodeType   //节点类型，返回值为数字
+
+  文本节点,3，元素节点：1，注释：8，属性节点：2，document节点：9
+
+* nodeName  //返回节点名称（#text(文本节点)，#comment(注释)，标签名，属性名(document)）
 
 ##### 获取相关元素
 
@@ -273,7 +282,7 @@ js创建元素之后，先放到文档碎片中存储起来，等所有元素都
 
 ~~~javascript
 //创建文档碎片，在内存中
-var chach = document.sreateDocumentFragment();  
+var chach = document.createDocumentFragment();  
 for(){
     //创建li
     chach.appendChild(li);  //内存中操作，速度快，减少DOM操作次数

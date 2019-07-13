@@ -105,8 +105,26 @@ for(var key in obj){
 * 排序
 
   ~~~javascript
-  arr1.sort(function(a,b){return a-b;})将arr1升序排序，参数为比较函数
+  arr1.sort(function(a,b){return a-b;})//将arr1升序排序，参数为比较函数
   arr1.reverse()//将数组元素颠倒
+  ~~~
+
+  arr.sort(fun)详解
+
+  * 会操作原始数组，经过操作后原始数组发生变化
+  * 默认排序按照字符编码排序
+  * 函数返回值小于0表示两个元素不需要交换位置，1表示要用交互位置，0表示相等，实际上<=0等效。
+
+  ~~~javascript
+  var arr1 = [14,23,11,6,87,67];
+  console.log(arr1.sort());//[11,14,23,6,67,87] 按字符而非数值排序
+  
+  function sortRule(a,b) {
+    return a-b; // 升序
+    // return b-a; // 降序
+  }
+  arr1.sort(sortRule);
+  console.log(arr1);//[6, 11, 14, 23, 67, 87]
   ~~~
 
 * 查询
@@ -140,15 +158,15 @@ for(var key in obj){
 
   ~~~javascript
   for(var j = 0; j < arr.length-1-i; j++){
-  						// 相邻的两个数比较大小
-  						if(arr[j] > arr[j+1]) {
-  							// 交换这两个
-  							var temp = arr[j];
-  							arr[j] = arr[j+1];
-  							arr[j+1] = temp;
-  							
-  						}
-  					}
+      // 相邻的两个数比较大小
+      if(arr[j] > arr[j+1]) {
+          // 交换这两个
+          var temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
+  
+      }
+  }
   ~~~
 
 * 快速排序

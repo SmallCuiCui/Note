@@ -14,7 +14,7 @@ vue做移动端项目，很多情况下都采用单页应用(只有一个html，
 
 缺点：
 
-* sec难度高（搜索引擎优化：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名，一种自我营销手段）
+* seo难度高（搜索引擎优化：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名，一种自我营销手段）
 * 前进后退管理，不能利用浏览器的前进后退功能--我试了可以呀
 * 初次加载耗时多
 
@@ -24,7 +24,7 @@ vue做移动端项目，很多情况下都采用单页应用(只有一个html，
 
 优点：
 
-* 首屏速度快，sec好
+* 首屏速度快，seo好
 
 缺点：
 
@@ -80,7 +80,7 @@ import * as ajax from '@/request'
 Vue.prototype.$http = ajax
 ~~~
 
-数据请求做法：常在src下面新建request文件夹，新建index文件专门处理axios请求，然后将方法暴露出去。在main.js中引入该index中暴露的方法，存到一个对象上面，再将对象挂载到全局Vue上面，这样所有的Vue实例都可以调用。下面是两次情况下的数据请求处理
+数据请求做法：常在src下面新建request文件夹，新建index文件专门处理axios请求，然后将方法暴露出去。在main.js中引入该index中暴露的方法，存到一个对象上面，再将对象挂载到全局Vue上面，这样所有的Vue实例都可以调用。下面是两种开发情况下的数据请求处理
 
 #### 前后端并行-baseUrl
 
@@ -89,15 +89,15 @@ Vue.prototype.$http = ajax
 ~~~javascript
 //index.js
 import axios from 'axios'
-const ajax = axios.create()
 
-// 定义baseUrl
 // process.env.NODE_ENV 是node的一个全局魔术变量，进程的环境： development\production
-console.log(process.env.NODE_ENV)
 const isDev = process.env.NODE_ENV === 'development'
-const baseUrl = isDev ? 'https://jsonplaceholder.typicode.com' : '上线之后的真实接口地址'
-
+const ajax = axios.create({
+    // 定义baseUrl
+    baseURL: isDev ? 'https://jsonplaceholder.typicode.com' : '上线之后的真实接口地址'
+})
 export const getAllTodos = () => ajax.get(baseUrl + '/todos')
+// 存在参数，使用模板字符串拼接
 export const getById = id => ajax.get(`${baseUrl}/todos/?${id}`)
 ~~~
 
@@ -155,7 +155,7 @@ module.exports = {
 
 #### router.js
 
-引入router插件，引入所有的路由涉及的组件，并配置路由
+引入router插件，新建路由实例，引入所有的路由涉及的组件，并配置路由
 
 ~~~javascript
 import Vue from 'vue'
@@ -197,7 +197,9 @@ export default new Router({
 
 组件中的一个标签\<router-view/>
 
-一个空的容器，渲染当前路由匹配的组件。但路由发生变化时，里面的内容对应路由显示不同的组件内容
+一个空的容器，渲染当前匹配路由的组件。当路由发生变化时，里面的内容对应路由显示不同的组件内容。
+
+存在多个router-view时需要命名分别进行配置。
 
 #### router-link
 
@@ -209,7 +211,7 @@ export default new Router({
 
 #### main.js
 
-引入router.js问价，并添加该路由到实例下
+引入router.js，并添加该路由到实例下
 
 ~~~javascript
 import router from './router'
@@ -222,7 +224,7 @@ new Vue({
 
 ### 命名路由
 
-组件下有多个\<router-view />时，渲染时需要指定渲染的组件是谁，则需要使用name为\<router-view>命名、为命名的是默认渲染的组件。这样可以应用底部组件(name="footer")在首页和部分页面渲染，而在部分页面不渲染
+组件下有多个\<router-view />时，渲染时需要指定渲染的组件是谁，则需要使用name为\<router-view>命名、未命名的是默认渲染的组件。这样可以应用指定组件(name="footer")在指定页面渲染，而在部分页面不渲染
 
 ~~~javascript
 {
@@ -231,6 +233,7 @@ new Vue({
   components: {
     default: Home,//默认渲染组件
     footer: MyFooter//渲染命名为footer的<router-view />
+    // 在其他组件下不配置footer时就不渲染
   }
 }
 ~~~
@@ -256,8 +259,8 @@ new Vue({
 
 链接到一个命名路由，可以给 `router-link` 的 `to` 属性传一个对象。
 
-* params参数对象中只显示组件名同名属性的值在地址上，其他属性作为参数隐式传递
-* query参数时显示的传递在地址上面
+* params参数对象中只显示组件名同名属性的值在地址上，其他属性作为参数隐式传递，配合name使用
+* query参数时显示所有的传递在地址上面吗，配合path使用
 
 ~~~html
 <!--组件下<router-link>-->
@@ -275,14 +278,20 @@ new Vue({
 在该动态组件内，通过this.$route上的参数，获取到name,path,params,query等属性，然后再根据获取到的参数进行数据请求。
 
 ~~~javascript
+// 根据动态路由的参数进行数据请求
+created () {
+  const id = this.$route.params.cateId
+  // 根据id请求数据
+  this.getData(id)
+},
 beforeRouteEnter (to, from, next) {
-    //在这里无法使用this,因为还没有进入这个组件
-     // next参数可以传一个回调函数，这个回调函数在next跳转之后执行，回调里的第一个参数就是this
-    next(vm => {
-        console.log(vm)
-        vm.cateName = to.params.cateName
-        vm.getData()
-    })
+  //在这里无法使用this,因为还没有进入这个组件
+  // next参数可以传一个回调函数，这个回调函数在next跳转之后执行，回调里的第一个参数就是this
+  next(vm => {
+     console.log(vm)
+     vm.cateName = to.params.cateName
+     vm.getData()
+  })
 }
 ~~~
 
@@ -322,13 +331,13 @@ router.beforeEach((to, from, next) => {
 
 ###### 元信息meta
 
-meta是路由上面的一个属性，是值当前路由默认就有的一些属性，比如 isAuthRequired，常用做导航守卫时的是否验证判断
+meta是路由上面的一个对象属性，在定义路由时可在该对象上自定义标志属性，比如 isAuthRequired用于标记是否需要进行登录验证，当进行导航守卫时的利用该属性进行跳转
 
 ~~~javas
 {
 	path: '/home',
 	conponent: 'Login',
-	// meta 元信息：当前路由默认自己就有的一些属性
+	// meta 元信息：当前路由默认就有的一个属性
     meta: {
       // 首页不需要登录验证
       isAuthRequired: false
@@ -373,9 +382,7 @@ meta是路由上面的一个属性，是值当前路由默认就有的一些属�
     template: `...`,
     beforeRouteEnter (to, from, next) {
       // 在渲染该组件的对应路由被 confirm 前调用
-      // 不！能！获取组件实例 `this`
-      // 因为当守卫执行前，组件实例还没被创建
-      
+      // 不！能！获取组件实例 `this` 因为当守卫执行前，组件实例还没被创建
       next(vm => {//代替this，vm就是指的this
         console.log(vm)
       })
@@ -403,10 +410,6 @@ watch: {
 }
 ~~~
 
-
-
-
-
 ## 路由相关
 
 #### 重定向
@@ -415,16 +418,14 @@ watch: {
 
 ~~~javascript
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       redirect: '/home'
     },
     {
       path: '/',
       component: Home
-    }
-    ]
+    }]
 })
 ~~~
 
@@ -471,7 +472,9 @@ export default new Router({
 
 #### 限制组件样式
 
-\<style scoped>scoped: css样式只对当前组件生效 
+\<style scoped>\</style>
+
+scoped: css样式只对当前组件生效 ，它会为当前组件的标签上额外添加一个样式，使当前样式内容只有在这个样式下才能使用
 
 #### this.$router
 
@@ -531,8 +534,6 @@ const List = () => import(/* webpackChunkName: "group-bar" */'@/views/List')
 const Login = () => import(/* webpackChunkName: "group-bar" */'@/views/Login')
 const Category = () => import(/* webpackChunkName: "group-foo" */'@/components/Category')
 ~~~
-
-
 
 ## vueX
 

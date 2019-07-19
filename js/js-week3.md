@@ -303,6 +303,28 @@ box.scrollWidth  //可滚动内容的宽高
 box.scrollheight
 ```
 
+* 对比offsetWidth与style.width取值
+
+  * 内容范围不一样
+
+    offsetWidth=width+border+padding 返回为数字，不带单位
+
+    style.width只包含width，返回带单位
+
+  * 可读性不一样
+
+    offsetWidth只可读，不能赋值
+
+    style.width是可读写的
+
+  * 对设置了宽度但是display:none元素的取值
+
+    offsetWidth返回值为0
+
+    style.width正常取值
+
+  * style.width不一定能取到值，它只能取到内部样式表的width属性值或者以style.width定义的值
+
 ##### DOM坐标
 
 * box.offsetLeft  //相对于元素当前相对于offsetParent的位置。

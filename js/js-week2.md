@@ -29,7 +29,7 @@ js在es6以前都是对象，没有类的概念（class语法糖也是基于原�
 
 ##### 遍历
 
-采用for-in变量对象
+采用for-in变量对象，遍历地到key，再根据key取属性值
 
 ~~~javascript
 var obj = new Object();
@@ -41,6 +41,34 @@ for(var key in obj){
 	console.log(obj[key]);//属性存在变量key中，访问属性值采用中括号
 }
 ~~~
+
+##### 深拷贝/浅拷贝
+
+浅拷贝：拷贝的是对象的引用，当拷贝改变时，原对象也会发生改变
+
+深拷贝：复制对象的属性与属性值来重新生成一个新对象，改变值不影响原对象
+
+###### 深拷贝的实现
+
+* 使用JSON.stringify与JSON.parse进行转换，但是存在弊端，它会忽略undifned
+
+* jquery的方法实现 $extend([boolean],targetObj,Obj)
+
+  * 不传递参数一，直接将Obj的属性合并到targetObj，遇到重复属性Obj属性将覆盖targetObj
+  * 参数一为false，遇到相同属性保留targetObj
+  * 参数一为true，当属性值是对象时，需要进行递归的合并，再遇到相同的属性名时保留Obj
+
+  ```js
+  // 将参数2,3的对象属性，属性值拷贝给参数一，参数一的原始值会发生改变，返回的是参数一
+  var object = $.extend([boolean],{}, object1, object2);
+  ```
+
+* 使用递归与for-in方法进行拷贝
+
+  ~~~
+  
+  ~~~
+
 
 ### 数组
 
@@ -96,6 +124,7 @@ for(var key in obj){
   arr1.shift()//删除并返回数组开头元素
   arr1.unshift()//数组开头添加一个或多个元素，并返回数组长度
   
+  //下面两个方法会改变原数组。
   arr1.slice(a,b);//返回arr1从下标为a到下标为b的元素，但是不包含b，返回值为数组
   			//b可省略，则截取到数组末尾，a,b可为负值
   arr1.splice(a,b,c,d)//删除一个或多个元素并添加一个或多个元素，返回被删除元素，返回值为数组

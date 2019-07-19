@@ -69,7 +69,7 @@ border-style:dotted(点)/dashed(虚线)/double(双线)  要有双线border-width大于等于3
 ?	流式布局方式：采用百分比的布局方式
 
 标准流下块级元素特性：宽度默认充满容器
-?	块级元素不设置宽和设置了宽100%效果上是一样的，区别是一个有宽一个没有宽，当脱离文档流之后没有设置宽的元素的宽为0，脱离文档流的元素需要加上宽需要加上宽
+?	块级元素不设置宽和设置了宽100%效果上是一样的，区别是一个有宽一个没有宽，当脱离文档流之后没有设置宽的元素的宽为0，脱离文档流的元素需要加上宽
 
 当给子元素设置margin-top时，浏览器在解析代码时会误认为给父元素设置的，所以整体会往下的情况。
 ?	注意点：1、子元素脱离文档流时不会
@@ -82,17 +82,17 @@ border-style:dotted(点)/dashed(虚线)/double(双线)  要有双线border-width大于等于3
 盒子模型：css布局的基础，规定了网页中的元素如何显示，以及元素之间的相互关系。
 ?	盒模型的组成：border（边框），margin（外边距），padding（内边距），content（内容宽高）。
 ?	盒子内容-文本，元素
-?	margin与padding 使用区别：
+margin与padding 使用区别：
 ?		1）当元素内容是文本的时候，必须使用padding
 ?			注意点：当使用padding时，会把元素的原有大小改变，如果不想改变元素大小的原有大小，又想出现效果必须从width与height减去相应的padding值
 ?			当元素没有设置width和height的时候，padding值不需要减去
 ?		2）当元素的内容是元素时，这个时候既可以使用margin也可以使用padding，哪个简单用哪个.
 ?	标准盒模型宽（高）=左右margin+左右padding+左右border+width（height）
-?	盒模型转换为IE（怪异）盒模型
+?	盒模型转换为IE（怪异）盒模型 盒子总宽度 = width（content+border+padding） + margin
 
 	box-sizing:border-box(怪异盒模型)/content-box(标准盒模型，默认)；css3新增盒模型属性，
-		诡异盒模型时，因为padding值增加的宽高不需要减去，会自动结算减掉。
-	margin:0 auto;一个有宽度的元素在浏览器中横向居中
+		诡异盒模型时，因为padding值增加的宽高不需要减去，会自动结算减掉。width包含了padding与border
+	margin:0 auto;一个`有宽度`的元素在浏览器中横向居中
 
 outline:none:去掉表单聚焦时的边框;
 letter-spacing:字间距
@@ -124,6 +124,21 @@ white-space:nowrap/pre/pre-wrap/pre-line;//设置如何处理元素内的空白
 text-overflow:ellipsis/clip;
 ?	ellipsisi:当单行文本溢出时显示省略号，常与overflow:hidden一起使用;
 ?	clip：不显示省略号
+
+~~~scss
+// 一行超出文本显示省略号
+{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+// 多行显示不下才出现省略号
+{
+    display:-webkit-box;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+~~~
 
 text-align:使文本与图片水平居中，设置在父元素上面
 
@@ -161,7 +176,7 @@ text-align:使文本与图片水平居中，设置在父元素上面
 vertical-align:middle/top/bottom;
 ?	1、使文字与图片垂直居中，以高度大的为参考，块级元素无效。设置在文字与图片上，并非容器上。
 ?	2、使元素垂直居中
-?	2、解决图片间隙问题（容器没有高的情况下，图片默认将容器撑大）
+?	3、解决图片间隙问题（容器没有高的情况下，图片默认将容器撑大）
 
 置换元素：浏览器根据元素的标签和属性，
 非置换元素
@@ -192,6 +207,7 @@ vertical-align:middle/top/bottom;
 ?	1、绝对定位脱离文档流，不占空间，不区分元素类型（比如行内元素也可以设置高宽）。
 ?	2、相对于最近一级拥有定位流的祖先元素进行定位。如果它的上级都没有定位流，则以body定位；
 ?	注意：绝对定位相对于谁定位时，默认先去找上一级
+
 #### 固定定位特点
 ?	1、脱离文档流，不占空间，不区分元素类型
 ?	2、相对于body定位
@@ -204,7 +220,7 @@ vertical-align:middle/top/bottom;
 z-index:控制定位元素的层级  auto/具体数值（没有单位，可以为负值）
 
 透明度：标准写法opacity:数值;  取值范围0-1小数
-?             IE写法 filter:alpha(opacity=value);取值范围1-100
+?        IE写法 filter:alpha(opacity=value);取值范围1-100
 ?	隐藏元素的方法 opacity:0;
 
 字幕滚动 <marquee></marquee>默认从右向左

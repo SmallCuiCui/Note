@@ -209,7 +209,7 @@ var app = new Vue({
 
 #### v-if / v-else
 
-判断条件为true时显示，为false时不显示(直接不渲染)；
+判断条件为true时显示，为false时不显示(直接不渲染)；切换条件时会触发销毁/挂载组件
 
 ```html
 //v-if与v-else必须是相邻的两个标签，否则v-else不生效
@@ -522,6 +522,8 @@ var myMixin = {
 
 ### 局部混入
 
+注意采用mixins混入的钩子函数，会先一步比组件自身的钩子函数执行。如相同的created，mixins的会先执行
+
 ~~~javascript
 var vm = new Vue({
   mixins: [myMixin],
@@ -539,6 +541,7 @@ var vm = new Vue({
 ### 全局混入
 
 ~~~javascript
+// 可应用全局封装好的ajax
 Vue.mixin(myMixin)
 ~~~
 

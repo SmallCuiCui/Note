@@ -89,9 +89,20 @@ var a = 3;
 
 ##### typeof()的返回
 
-​	typeof()返回有六种值(变量类型)：number,boolean,string,undfined,object(数组也是对象),function。
+​	typeof()返回有六种值(变量类型)：number,boolean,string,undfined,object(对象,数组,null),function。
 
-​	返回值均为字符串，typeof(null)为object
+​	返回值均为字符串
+
+##### instanceof
+
+区分对象与数组，使用A instanceof B，判断a对象是否是b对象的实例
+
+~~~javascript
+console.log([] instanceof Array)  //true
+console.log({} instanceof Object)  //true
+~~~
+
+
 
 ### 数据转换
 

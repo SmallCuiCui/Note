@@ -18,6 +18,8 @@ npm add babel-standalone --save (解析jsx)
 
 ### jsx
 
+由babel解析，原理：createElement
+
 #### 基本语法
 
 jsx： JavaScript扩展(js+xml，js代码中使用xml)  语法糖 可以提高开发效率 非必须
@@ -466,7 +468,7 @@ axios.get('/user?ID=12345',{
 
 ~~~javascript
 proxy: {
-   "/data": {
+   "/mz/data": {
        // 假设通过代理到node提供的数据接口上
         "target": "https://localhost:3000",
         "changeOrigin": true,

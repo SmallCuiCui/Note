@@ -277,7 +277,7 @@ app.listen(3000,()=>{
 
 * `express -h`查看命令行参数
 
-* 使用express创建应用`express --viw=ejs exApp`其中参数ejs是一种模板引擎
+* 使用express创建应用`express --view=ejs exApp`其中参数ejs是一种模板引擎
 
 * `cd exApp`进入项目
 

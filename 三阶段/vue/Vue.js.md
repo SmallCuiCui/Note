@@ -291,7 +291,7 @@ divCss:{
 vue实例化的时候这个属性自动消失，直接添加到元素上，没有值。配合css给含有这个属性的元素不显示，可以解决vue实例化慢与dom加载情况下出现的{{...}}的情况。
 
 ```html
-<div id="app" v-cloak></div>
+<div id="app" v-cloak>{{text}}</div>
 <style>
     [v-cloak]{
         display:none;
@@ -307,7 +307,7 @@ vue实例化的时候这个属性自动消失，直接添加到元素上，没�
 
 数据驱动表单数据，表单数据更新数据
 
-#### v-bind与@input实现
+#### :value与@input实现
 
 ~~~html
 <!--使用v-bind使数据绑定到input，使用@input事件，或者@keyup从input绑定到数据-->
@@ -364,10 +364,6 @@ v-model实现复选框的原理，@change将复选框的选择变化绑定到数
     })
 </script>
 ~~~
-
-
-
-
 
 #### v-model实现
 
@@ -520,7 +516,7 @@ var myMixin = {
 }
 ~~~
 
-### 局部混入
+### 局部混入mixins
 
 注意采用mixins混入的钩子函数，会先一步比组件自身的钩子函数执行。如相同的created，mixins的会先执行
 
@@ -538,7 +534,7 @@ var vm = new Vue({
 })
 ~~~
 
-### 全局混入
+### 全局混入mixin
 
 ~~~javascript
 // 可应用全局封装好的ajax

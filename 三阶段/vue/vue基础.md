@@ -144,7 +144,7 @@ fetch('https://jsonplaceholder.typicode.com/todos')
 
 缺点：针对mvc编程，不符合MVVM模型。jquery项目太大，单纯使用ajax需要引入整个jquery不合理。
 
-#### axios-vue常用
+#### axios   vue常用
 
 axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，本质上也是对原生XHR的封装，只不过它是Promise的实现版本，符合最新的ES规范。
 

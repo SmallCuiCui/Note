@@ -301,6 +301,22 @@ class List extends React.Component {
 
   父组件传递过来的props数据改变时，使用这个钩子才可以更新子组件的派生state
 
+~~~react
+static getDerivedStateFromProps(nextProps, prevState) {
+    const {type} = nextProps;
+    // 当传入的type发生变化的时候，更新state
+    if (type !== prevState.type) {
+        return {
+            type,
+        };
+    }
+    // 否则，对于state不进行任何操作
+    return null;
+}
+~~~
+
+
+
 ##### render ()
 
 组件定义必不可少，必须有返回值，返回jsx格式的内容

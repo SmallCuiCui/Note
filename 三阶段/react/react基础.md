@@ -156,7 +156,7 @@ const Mycomponent = (props) => {
 
 ##### 无状态组件
 
-组件中无法定义state，只能接收props
+组件中无法定义state，只能接收props。没有自身状态
 
 ~~~react
 function ShowList(props){
@@ -174,6 +174,10 @@ ReactDOM.render(<div>
       </div>,
       document.getElementById("app"))
 ~~~
+
+###### Hook
+
+可以在无状态组件中使用状态。useState
 
 ##### 类组件
 
@@ -568,4 +572,6 @@ router.get('/data',(req,resp) => {
   ~~~
 
 * 在该接口文件所在目录下执行命令：`apidoc -i . -o doc/  `  意思是在当前目录(-o)下的doc文件夹下生成接口文档，随即生成接口文档。接口文档包含url，参数，请求方式，返回等
+
+## HOOK
 

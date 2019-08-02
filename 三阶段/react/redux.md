@@ -185,11 +185,12 @@ console.log(store.getState().one.n)
 * connect (参数一，参数二)(组件)
 
   * 参数一是一个函数，映射store的数据到props上
-  * 参数二是一个actionCreactor对象，映射actionCreactor的方法到props上
+  * 参数二是一个actionCreactor对象，映射actionCreactor的方法到props上，可选
   * 组件是指ui组件
   * connect方法返回容器组件
 
   ~~~react
+  import {connect} from "react-redux"
   // mapState作用是映射store的数据到组件--只映射todo模块的数据中的list数据
   var mapState = (state) {
   	return {
@@ -206,7 +207,7 @@ console.log(store.getState().one.n)
   // connect(null,actionCreactor)(Todos)
   ~~~
 
-## redux-thunk插件-异步获取数据
+## redux-thunk-异步获取数据
 
 当存在异步数据请求时，使用redux-thunk进行处理。
 

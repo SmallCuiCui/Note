@@ -191,9 +191,11 @@ const Newdiv = styled(Div)`
 ~~~react
 import propTypes from 'prop-types'
 // One是一个无状态组件
+// 验证prop，是数字类型，且是必须的
 One.propTypes={
 	a:PropTypes.Number.isrequired
 }
+// 默认值
 One.defalutProps={
 	a:10
 }

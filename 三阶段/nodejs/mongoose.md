@@ -6,6 +6,27 @@
 - 设置数据库存放位置
   - 在安装下的.....MongoDB/server/3.1.4/bin目录下打开命令行
   - 命令`mongod --dbpath D:/dbFile`  设置数据库存放位置D:/db
+
+* 命令行操作
+
+  3): 再打开一个命令行输入mongo
+
+  4): show dbs: 展示所有数据库
+
+  5): use + 数据库名: 进入某一个数据库，如果没有则会创建一个
+
+  6): show collections: 展示当前数据库所有表单
+
+  7): 查询所有数据: db.表单名.find()
+
+  8): 插入单条数据: db.表单名.save({name: 'xxx', password: '123'})
+
+  9): 插入多条数据: for(var i=200; i< 400; i++) {
+
+  db.student.save({name: "cxk"+i, age: "123"+i})
+
+  }
+
 - Robo 3T可视化的MongoDB数据库管理
 - 对照MySQL数据库
 

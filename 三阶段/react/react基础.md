@@ -251,7 +251,7 @@ ReactDOM.render(<MyApp data={1} />,document.getElementById('app'))
 ~~~
 //定义
 ref="xxx"  使用this.refs.xxx获取
-ref={(node)=>this.属性=node}  使用this.xxx获取
+ref={(node)=>this.xxx=node}  使用this.xxx获取
 ~~~
 
 节点的获取在componentDidMount(组件挂载完成) 钩子函数下才能获取，通过this.refs.xxx
@@ -314,8 +314,6 @@ static getDerivedStateFromProps(nextProps, prevState) {
     return null;
 }
 ~~~
-
-
 
 ##### render ()
 
@@ -480,26 +478,26 @@ axios.get('/user?ID=12345',{
 
 * 正向代理：由客户端将代理设置好目标服务器，向自己服务器发送请求后，由它代替自己去访问目标服务器
 
-​	react中手动在config/jest/web....下面设proxy的目标服务器
+​	react中手动在config/jest/web....下面设proxy的目标服务器--需要前端处理
 
 ~~~javascript
 proxy: {
-   "/mz/data": {
+   "/mz": {
        // 假设通过代理到node提供的数据接口上
         "target": "https://localhost:3000",
         "changeOrigin": true,
         "pathRewrite": {
-          "^/mz": "/"
+          "^/mz": ""
         }
    }
 }
 ~~~
 
-* 反向代理： 客户端无需设置代理，前端访问，由后端到目标源请求数据后返回给前端，前端不会感知到代理的存在
+* 反向代理： 客户端无需设置代理，前端访问，由后端到目标源请求数据后返回给前端，前端不会感知到代理的存在--不需要前端处理
 
 ### 数据提供
 
-均存在跨域，需要进行正向代理
+以下方式均存在跨域，需要进行正向代理
 
 #### node提供
 

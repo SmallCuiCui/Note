@@ -281,11 +281,99 @@ export default {
    8. 交给安全团队测试
    9. 上线（生产服务器）
 
+## mobx
+
+react项目中
+
+react-app-rewired
+
+customize-cra -D
+
+装饰器 -D
+
+mobx -S
+
+mobx-react -S
+
+* 建仓库，可以建多个仓库  store/store.js
+
+  ~~~react
+  import {observable,action} from "mobx-react"
+  class Demo {
+      @observable a=5;
+  	@action
+      change= ()=> {
+         this.a ++ 
+      }
+  }
+  var store = new Demo();
+  export default store
+  ~~~
+
+* 挂载仓库到组件,app.js文件中
+
+  ~~~react
+  import store from "./store
+  import {Provider} from "mobx-react"
+  ReactDOM.render(
+    <Provider store={store}>
+  	<App />
+    </Provider>, document.getElementById('root'));
+  ~~~
+
+* 组件中使用
+
+  ~~~react
+  import {observer, inject} from "mobx-react"
+  @inject("store")  //引入仓库
+  @observer  // 检测数据变化
+  class Test extends component{
+      render(){
+  		return <div>
+              {this.props.store.a}
+              <button onClick={this.props.store.change}></button>
+          </div>
+  	}
+  }
+  ~~~
+
+
+## immutable
+
+不可修改对象。只要数据发生变化，将返回一个新的副本。自动产生副本，且采用了结构共享的技术，性能好。
+
+安装immutable
+
+~~~react
+// 基础使用
+import {Map,is,List} from 'immutable';
+var m1 = Map({a:1});
+var m2 = m1.set("a",2); //修改产生新的对象
+var m3 =Map({a:1});
+console.log(m1===m3)
+console.log(m1.equals(m3))
+console.log(is(m1,m3))
+ console.log(m2.get("a"),m1.get("a"))
+var l1=List([1, 2]);
+ var l2 = l1.push(3);  //修改产生新的对象
+console.log(l1.get(0),l2.get(0))
+~~~
 
 
 
+~~~react
+import {Map, is, List} from "immutable"
 
+var initState = Map({
+    n:6
+})
+~~~
 
+分模块下要安装：redux-immutable
+
+import {combineRducer} from "redux-immutable"
+
+fromJS将js对象转为im对象。toJS将im对象转为
 
 
 

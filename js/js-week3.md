@@ -223,15 +223,15 @@ html中的所有内容都是节点，包括标签，文本，注释等。节点�
 
 * nodeValue  //获取*文本节点*的文字内容，并且可以赋值，会替换原内容。可获取属性节点的值
 
-* box.childNodes[0].nodevalue = '<strong>abc</strong>' ;
+* box.childNodes[0].nodevalue = '\<strong>abc\</strong>' ;
 
   //文本节点的属性，其他类型节点使用没效果。不会被解析成标签，会将标签名转义为字符串直接输出
 
-* box.innerText=  '<strong>abc</strong>' ;不会解析标签，替换box节点下的所有节点
+* box.innerText=  '\<strong>abc\</strong>' ;  不会解析标签，替换box节点下的所有节点
 
-* box.innerHTML=  '<strong>abc</strong>' ;//标签会被解析，替换box节点下的所有节点（非w3c）
+* box.innerHTML=  '\<strong>abc\</strong>' ;  标签会被解析，替换box节点下的所有节点（非w3c）
 
-* box.outerHTML=  '<strong>abc</strong>' 会解析，但包含自己一起被替换（非w3c）
+* box.outerHTML=  '\<strong>abc\</strong>'   会解析，但包含自己一起被替换（非w3c）
 
 * nodeType   //节点类型，返回值为数字
 
@@ -379,7 +379,11 @@ if(e.stopPropagation){
 
 ##### 事件句柄
 
-：click,mousedown,mousemove,mouseup,keydown,keyup,keypress不包含on
+click
+
+mousedown,mouseup,mousemove,mouseenter,mouseover,mouseleave,
+
+keydown,keyup,keypress不包含on
 
 元素节点.on+事件句柄 = function(e){
 

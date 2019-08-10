@@ -89,9 +89,14 @@ var a = 3;
 
 ##### typeof()的返回
 
-​	typeof()返回有六种值(变量类型)：number,boolean,string,undfined,object(对象,数组,null),function。
+typeof()返回有六种值(变量类型)，返回值均为字符串
 
-​	返回值均为字符串
+* number(Number,NAN)
+* boolean
+* string
+* undfined
+* object(对象,数组,null)
+* function。
 
 ##### instanceof
 
@@ -101,8 +106,6 @@ var a = 3;
 console.log([] instanceof Array)  //true
 console.log({} instanceof Object)  //true
 ~~~
-
-
 
 ### 数据转换
 
@@ -120,14 +123,14 @@ console.log({} instanceof Object)  //true
 
 ##### 显示转换
 
-​	parseInt()从左往右开始，遇到特殊字符或小数点就结束
-​	parseFloat()从左往右开始，遇到特殊字符或第二个小数点就结束
-​	Number()将只包含数字（整数或小数）的字符串转换为数字类型，但是不能包含其他非数字字符
-​	num.toString()将数字转换为字符串
-​	String()将数字转换为字符串
-​	num.toFixed(3)保留num的三位小数，并且转换为字符串***
-​	NaN不是一个数字的数字，但是typeof(NaN)得到number类型，
-​		NaN==NaN的判断结果为flase，所有无法采用双等号来判断一个值是否为NaN,采用isNaN(num)判断.
+* parseInt()从左往右开始，遇到特殊字符或小数点就结束
+* parseFloat()从左往右开始，遇到特殊字符或第二个小数点就结束
+* Number()将只包含数字（整数或小数）的字符串转换为数字类型，不能包含其他非数字字符，否则为NAN
+* num.toString()将数字转换为字符串
+* String()将数字转换为字符串
+* num.toFixed(3)保留num的三位小数，并且转换为字符串***
+* NaN不是一个数字的数字，但是typeof(NaN)得到number类型，
+  ​	NaN==NaN的判断结果为flase，所有无法采用双等号来判断一个值是否为NaN,采用isNaN(num)判断.
 
 ### 运算符
 

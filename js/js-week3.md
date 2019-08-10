@@ -7,7 +7,7 @@ BOM  DOM  事件
 * 在html中写的表格，渲染到浏览器会自动添加tbody和thead。
 * 平时使用js创建表格时，注意加上thead,tbody。避免出现删除查找时的bug
 
-##### mouseenter与mouseover差别
+##### mouseenter || mouseover
 
 onmouseenter：只有在鼠标指针穿过被选元素时，才会触发 mouseenter 事件
 onmouseleave
@@ -49,11 +49,9 @@ window是全局浏览器内置顶级对象，表示一个浏览器窗口。在js
 
 ##### window下的子对象
 
-：document，location，navigator，history，screen，frames
+document，location，navigator，history，screen，frames
 
 ###### document
-
-
 
 ###### location
 
@@ -179,7 +177,7 @@ ES5选择器：也是元素的方法，相当于给选择加了限制条件
 
 ##### 获取属性值
 
-：元素的方法，不能使用document调用。
+元素的方法，不能使用document调用。
 
 * element.attributes  // 属性 获取所有该节点的信息，只做获取。不是方法，
 
@@ -197,7 +195,7 @@ ES5选择器：也是元素的方法，相当于给选择加了限制条件
 
 ele.style.attr  //通常用于赋值。只能获取内联样式的样式，通过css设置的样式无法获取
 
-ele.currentStyle[attr]   //IE获取样式
+ele.currentStyle[attr]   // IE获取样式
 
 getComputedStyle(ele,false)[attr]  //false的意思是可以获取伪元素
 
@@ -223,15 +221,15 @@ html中的所有内容都是节点，包括标签，文本，注释等。节点�
 
 * nodeValue  //获取*文本节点*的文字内容，并且可以赋值，会替换原内容。可获取属性节点的值
 
-* box.childNodes[0].nodevalue = '<strong>abc</strong>' ;
+* box.childNodes[0].nodevalue = '\<strong>abc\</strong>' ;
 
   //文本节点的属性，其他类型节点使用没效果。不会被解析成标签，会将标签名转义为字符串直接输出
 
-* box.innerText=  '<strong>abc</strong>' ;不会解析标签，替换box节点下的所有节点
+* box.innerText=  '\<strong>abc\</strong>' ;  不会解析标签，替换box节点下的所有节点
 
-* box.innerHTML=  '<strong>abc</strong>' ;//标签会被解析，替换box节点下的所有节点（非w3c）
+* box.innerHTML=  '\<strong>abc\</strong>' ;  标签会被解析，替换box节点下的所有节点（非w3c）
 
-* box.outerHTML=  '<strong>abc</strong>' 会解析，但包含自己一起被替换（非w3c）
+* box.outerHTML=  '\<strong>abc\</strong>'   会解析，但包含自己一起被替换（非w3c）
 
 * nodeType   //节点类型，返回值为数字
 
@@ -337,51 +335,19 @@ box.scrollheight
   * 元素非fiexd定位，父级均无定位，则offsetParent为body
   * 元素非fiexd定位，父级存在定位，则offsetParent为最近的定位父级
 
-##### 获取body尺寸
-
-~~~
-width = document.documentElement.clientWidth || document.body.clientWidth,
-height = document.documentElement.clientHeight || document.body.clientHeight
-~~~
-
-
-
 ### 事件
 
 事件是给浏览器定义一个预处理函数，当事件触发的时候执行函数
 
-##### 兼容问题
-
-~~~javascript
-//事件对象兼容
-e = e || window.event;
-//阻止默认行为
-//oncontextmenu鼠标右键
-//onsubmit表单提交事件 
-document.oncontextmenu = function(e){
-    if(e.preventDefault){
-		e.preventDefault();
-	}else{
-		e.returnValue = false;  
-	}
-}
-
-//阻止冒泡
-if(e.stopPropagation){
-    e.stopPropagation();
-}else{
-    e.cancelBubble = true;
-}
-//事件委托
-//监听事件的绑定与取消绑定
-//鼠标滚轮事件
-~~~
-
 ##### 事件句柄
 
-：click,mousedown,mousemove,mouseup,keydown,keyup,keypress不包含on
+click,scroll
 
-元素节点.on+事件句柄 = function(e){
+mousedown,mouseup,mousemove,mouseenter,mouseover,mouseleave,
+
+keydown,keyup,keypress
+
+element.on+事件句柄 = function(e){
 
 ​	e = e.window.event;
 
@@ -414,7 +380,7 @@ document.onkeydown=function(e){
 	e = e||window.event;
     //解决兼容
     var code = e.keyCode ||e.which;
-    if(code ===13&&e.altKey){
+    if(code ===13 && e.altKey){
         alert('同时按下enter和alt');
     }
 }
@@ -428,6 +394,7 @@ var scroll = function (obj, fn) {
 	// fn为回调函数，函数作为参数传递
 	// 判断事件有没有效，而不是有没有绑定（有效但是没有绑定的时候值为null）
 	if(obj.onmousewheel !== undefined) {
+        // 兼容IE8以下
 		obj.onmousewheel = function (e) {
 			e = e || event;
 			fn(e.wheelDelta < 0);
@@ -439,24 +406,23 @@ var scroll = function (obj, fn) {
 		})
 	}
 }
-~~~
 
-~~~javascript
-//获取滚轮顶部的距离scrollTop
-//兼容各浏览器
-var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+//
+object.onscroll=function(){
+    
+};
 ~~~
 
 ##### 事件流
 
-​	:事件执行顺序，捕获阶段->目标阶段->冒泡阶段
-​	事件处理是在冒泡阶段进行。子元素事件触发之后，父元素的相同事件也会被随之触发
-​	采用事件监听可以设置事件处理在捕获阶段进行。
-​	IE浏览器不认识捕获，但是有捕获的
+事件执行顺序，捕获阶段->目标阶段->冒泡阶段
+事件处理是在冒泡阶段进行。子元素事件触发之后，父元素的相同事件也会被随之触发
+采用事件监听可以设置事件处理在捕获阶段进行。
+IE浏览器不认识捕获，但是有捕获的
 
 ##### 事件绑定
 
-：DOM0级事件处理，同一个元素的同一个事件只能绑定一个处理函数，如果绑定多个，后面的会覆盖前面的。
+DOM0级事件处理，同一个元素的同一个事件只能绑定一个处理函数，如果绑定多个，后面的会覆盖前面的。
 
 ~~~JavaScript
 div.onclick = function(){}
@@ -464,7 +430,7 @@ div.onclick = function(){}
 
 ##### 事件监听 *
 
-：DOM2级事件处理，可以重复监听，同一事件可有多个处理函数。存在兼容问题
+DOM2级事件处理，可以重复监听，同一事件可有多个处理函数。存在兼容问题
 
 ~~~javascript
 //事件监听绑定兼容
@@ -474,7 +440,7 @@ if(window.attachEvent){
     div.addEventListenner("click",function(){},true); 
 	//参数一：事件句柄，，没有on
 	//参数二：处理函数
-	//参数三：是否捕获,true:表示在 捕获阶段进行处理函数，即先触发父元素的处理函数，然后才是子目		
+	//参数三：是否捕获,true:表示在捕获阶段进行处理函数，默认false		
 }
 
 //移除事件监听
@@ -491,7 +457,7 @@ if(window.detachEvent){
 
 优点：
 
-* 只需要绑定一次事件，把事件委托给父级。效率更高
+* 只需要绑定一次事件，把事件委托给父级。提高性能
 * 事件源不确定下没法绑定事件，通过事件委托为新加入元素绑定事件
 
 事件源：获得点击的具体元素
@@ -501,7 +467,75 @@ var target = e.target || e.srcElement;//存在兼容问题
 var tar = target.nodeHTML;//target是一个事件对象的一个对象，获得标签名来判断事件源
 ~~~
 
+### 常见兼容
 
+##### 事件对象兼容
+
+ IE将事件作为window对象的event属性
+
+~~~js
+e  = e || window.event;
+~~~
+
+##### 事件目标对象
+
+IE下,event对象有srcElement属性,但是没有target属性;Firefox下,even对象有target属性,但是没有srcElement属性
+
+~~~js
+var target = event.target || event.srcElement;
+~~~
+
+##### 阻止事件冒泡
+
+stopPropagation()为标准写法，是一个方法；cancelBubble是属性，IE写法，为true表示阻止
+
+~~~js
+// 判断stopPropagation是否存在，如果存在则用标准写法否则则用IE的写法，不可反过来判断
+event.stopPropagation ? event.stopPropagation() : event.cancelBubble=true;
+~~~
+
+##### 阻止默认行为
+
+preventDefault()标准写法，returnValue()IE写法。
+
+一般情况建议直接使用return false阻止，但和取消默认事件的含义是不同的
+
+~~~js
+evt.preventDefault ? evt.preventDefault():evt.returnValue=false;
+~~~
+
+##### 事件监听
+
+* 标准浏览器：addEventListener是否存在，如果存在则用否则用 
+
+  removeEventListener()
+
+* IE8以下：attachEvent
+
+  detachEvent()
+
+##### 滚动条兼容
+
+~~~js
+document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+~~~
+
+##### 获取样式
+
+~~~js
+function getStyle(dom, styleName){
+	return dom.currentStyle ? dom.currentStyle[styleName] :getComputedStyle(dom)[styleName];
+}
+~~~
+
+##### 网页可视区域
+
+~~~js
+window.innerHeight ||document.documentElement.clientHeight ||document.body.clientHeight
+window.innerWidth ||document.documentElement.clientWidth ||document.body.clientWidth
+~~~
+
+##### 
 
 ​	
 

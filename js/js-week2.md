@@ -6,7 +6,7 @@
 
 类是对象的抽象，对象是类的实例
 
-js中一切皆为对象。任何东西沿着原型链都能找到对象，实例的__proto__指向构造函数的prototype.prototype上的方法是所有实例共享的
+js中一切皆为对象。任何东西沿着原型链都能找到对象，实例的\__proto__指向构造函数的prototype，prototype上的方法是所有实例共享的
 
 js在es6以前都是对象，没有类的概念（class语法糖也是基于原型的）
 
@@ -50,7 +50,7 @@ for(var key in obj){
 
 ###### 深拷贝的实现
 
-* 使用JSON.stringify与JSON.parse进行转换，但是存在弊端，它会忽略undifned
+* 使用JSON.stringify与JSON.parse进行转换，但是存在弊端，它会忽略undefined
 
 * jquery的方法实现 $extend([boolean],targetObj,Obj)
 
@@ -98,7 +98,7 @@ for(var key in obj){
     }
   ~~~
 
-* foR-of (ES6)     //用于遍历数组以及字符串
+* for-of (ES6)     //用于遍历数组以及字符串
 
   ~~~javascript
   for(var i of arr){
@@ -119,14 +119,16 @@ for(var key in obj){
 *  删除/添加
 
   ~~~javascript
-  arr1.pop()//删除并返回末尾元素
+  // 均改变原数组
+arr1.pop()//删除并返回末尾元素
   arr1.push()//通过传参向数组末尾添加一个或多个元素，并返回新数组长度
   arr1.shift()//删除并返回数组开头元素
   arr1.unshift()//数组开头添加一个或多个元素，并返回数组长度
   
-  //下面两个方法会改变原数组。
+  //不会改变原数组。
   arr1.slice(a,b);//返回arr1从下标为a到下标为b的元素，但是不包含b，返回值为数组
   			//b可省略，则截取到数组末尾，a,b可为负值
+// 会改变原数组
   arr1.splice(a,b,c,d)//删除一个或多个元素并添加一个或多个元素，返回被删除元素，返回值为数组
   			//从下标a开始删除b个元素，并添加c,d到删除位置
   ~~~
@@ -177,30 +179,46 @@ for(var key in obj){
 
 ##### 数组去重
 
-​	1、双重for循环
-​	2、采用对象的属性不能重复度的特点  (*效率最高)
-​	3、Array.from(new Set(arr));    //feom将类数组转成数组，Set默认去重
+1. 双重for循环,配合数组方法splice()
+2. 开辟新空间，配合includes()方法或者indexOf()
+3. 采用对象的属性不能重复度的特点  (*效率最高)
+4. ES6新数据结构set()    Array.from(new Set(arr));    //feom将类数组转成数组，Set默认去重
 
-##### 排序
+##### 数组清空方法
 
-* 冒泡排序
+​	arr.length = 0;
+​	arr = [];
+​	arr.splice(0);
+
+### 排序
+
+##### 交换排序
+
+* 冒泡排序O(n^2)
+
+  原理：第一趟找最大(小)放到最后，第二趟找次大(小)放到倒数第二，，，依次
 
   ~~~javascript
-  for(var j = 0; j < arr.length-1-i; j++){
-      // 相邻的两个数比较大小
-      if(arr[j] > arr[j+1]) {
-          // 交换这两个
-          var temp = arr[j];
-          arr[j] = arr[j+1];
-          arr[j+1] = temp;
-  
+  for(var i=0;i<arr.length - 1;i++){
+      for(var j = 0; j < arr.length-1-i; j++){
+          // 相邻的两个数比较大小
+          if(arr[j] > arr[j+1]) {
+              // 交换这两个
+              var temp = arr[j];
+              arr[j] = arr[j+1];
+              arr[j+1] = temp;
+          }
       }
   }
   ~~~
 
 * 快速排序
 
-* 选择排序
+##### 选择排序
+
+* 简单选择排序O(n^2)
+
+  原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。
 
   ~~~javascript
   // 外层循环控制趟数 length-1趟
@@ -209,12 +227,12 @@ for(var key in obj){
   	var minIndex = i;
   	//内层从i开始,到length-1结束
   	for(var j = i+1; j < arr.length; j++){
-  	// minIndex跟j对应的值比较
-  	if(arr[minIndex] > arr[j]){
-  		// 说明minIndex并不是最小值的下标
-  		// 只是记录下标,不交换
-  		minIndex = j;
-  		}
+  		// minIndex跟j对应的值比较
+          if(arr[minIndex] > arr[j]){
+              // 说明minIndex并不是最小值的下标
+              // 只是记录下标,不交换
+              minIndex = j;
+              }
   	}
   // minIndex这个时候存的就是当前趟的最小值的下标
   	var temp = arr[i];
@@ -223,11 +241,25 @@ for(var key in obj){
   }
   ~~~
 
-##### 数组清空方法
+##### 插入排序
 
-​	arr.length = 0;
-​	arr = [];
-​	arr.splice(0);
+* 插入排序O(n^2)
+
+  原理：通过构建有序序列，对为进行排序数据，在已排序序列中从后向前扫描，不断交换位置，找到相应位置后插入
+
+  ~~~js
+  for(var i=1; i<arr.length; i++){
+        for(var j=i;j>0;j--){
+          if(arr[j]<arr[j-1]){
+            var t=arr[j]
+            arr[j] = arr[j-1]
+            arr[j-1] = t
+          } else {
+            break
+          }
+        }
+      }
+  ~~~
 
 ### json数据格式
 
@@ -253,14 +285,18 @@ var h5 = [
 ##### 字符串常见API
 
 ```javascript
-str1.charAt();  //返回指定下标的字符
-str1.indexOf();//检索字符串，返回下标
+str1.charAt();  //返回指定下标的字符	
+str1.indexOf();//检索"字符串"，返回第一个匹配字符串的下标，未匹配时返回-1
 str1.lastIndexOf();//从后面开始检索字符串，返回下标
-str1.replace("","")//检索字符串，参数后者替换前者，返回新字符串，不改变str1
 
+// 支持正则
+str1.replace("","")//检索字符串，参数后者替换前者,使用字符串匹配时只匹配一次，全部匹配采用正则。返回新字符串，不改变str1
+str1.search()
+str1.match()
 str1.split(",")  //将字符串以,分割为字符串数组。返回为一个新数组
-str1.slice(2,4)  //截取下标从2到4的字符，不包括4
-str.substring(2,4) //截取下标从2到4的字符，不包括4
+
+str1.slice(2,4)  //截取下标从2到4的字符，不包括4，参数一是较小下标，参数二较大，如果反了返回为空
+str.substring(2,4) //截取下标从2到4的字符，不包括4，参数一二的大小随意，反正取小的到大的之间的
 str.substr(2,4);  //截取下标从2开始的4个字符
 
 str.toUpperCase()  //将str中的小写转换为大写，并返回新数组

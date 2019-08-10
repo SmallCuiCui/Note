@@ -1,3 +1,5 @@
+# 部分补充
+
 ## better-scroll
 
 它是由原生js写的插件，用于处理滚动事件的，vue与react都可以使用，但是它只能用于移动端项目。
@@ -72,11 +74,17 @@ function One(){
 export default One
 ~~~
 
+# 管理系统
+
+创建项目`create-react-app xx`
+
+antd  实现按需加载  axios  redux,react-redux,redux-thunk  react-router-dom
+
 ## ant-design
 
 是一个react的UI库（PC端）官网：ant.design
 
-安装`npm install antd`
+安装`cnpm install antd`
 
 ### 加载模式
 
@@ -100,7 +108,7 @@ function App() {
 
    对 create-react-app 的默认配置package.json进行自定义配置
 
-   * 安装： `cnpm add react-app-rewired customize-cra`
+   * 安装： `cnpm install react-app-rewired customize-cra`
 
    * 修改package.json文件，修改scripts字段，将所有的react-scripts替换为react-app-rewired
 
@@ -220,7 +228,6 @@ module.exports = override(
    <Button type="primary">Primary</Button>
   ~~~
 
-  
 
 ### 常用组件
 

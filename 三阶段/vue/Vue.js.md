@@ -132,26 +132,27 @@ Vue.filter('my-filter', function (value) {
 ```javascript
 //js
 var app = new Vue({
-			el:'#app',
-			data:{
-				message:'hello Vue.js',
-				show:true,
-				shops:[{
-					id:'1',
-					name:'鼠标',
-					price:50
-				},{
-					id:'2',
-					name:'键盘',
-					price:50
-				}
-				]
-			},
-			methods:{
-				change:function(){
-					this.message = this.message.split('').reverse().join('');
-				}
-			}
+    el:'#app',
+    data:{
+        message:'hello Vue.js',
+        show:true,
+        shops:[{
+            id:'1',
+            name:'鼠标',
+            price:50
+        },{
+            id:'2',
+            name:'键盘',
+            price:50
+        }
+              ]
+    },
+    methods:{
+        change:function(){
+            this.message = this.message.split('').reverse().join('');
+        }
+    }
+}）
 ```
 
 #### 模板语法{{}}
@@ -187,6 +188,10 @@ var app = new Vue({
 
 内容原样输出到标签内，不会解析html标签，覆盖原内容
 
+#### v-pre
+
+跳过需要渲染的数据，调试的时候用。
+
 #### v-for
 
 遍历data数据，in或者of都可以，方法都类似，都可以使用()得到值与索引。for-in用的较多
@@ -198,7 +203,7 @@ var app = new Vue({
 
 <!--遍历data中的对象person-->
 <li v-for="value in person">{{value}}</li>
-<li v-for="(value,key) of person">{{key}}:{{value}}</li>
+<li v-for="(value,key,index) of person">{{key}}:{{value}}</li>
 
 <!--遍历data中的字符串str-->
 <li v-for="char in str">{{char}}</li>
@@ -303,6 +308,16 @@ vue实例化的时候这个属性自动消失，直接添加到元素上，没�
 
 只渲染元素和组件一次。在随后的的渲染下，该元素或组件及其所有的子节点都将跳过渲染。
 
+#### v-model
+
+表单控件或组件上创建双向绑定。input,select,textarea
+
+修饰符：
+
+* .lazy  当绑定在input上时，失去焦点时才触发，而不是改变就触发
+* .number  输入字符串转为有效的数字
+* .trim  输入首尾空格过滤
+
 ## 表单双向数据设置
 
 数据驱动表单数据，表单数据更新数据
@@ -367,7 +382,7 @@ v-model实现复选框的原理，@change将复选框的选择变化绑定到数
 
 #### v-model实现
 
-直接使用v-model实现双向绑定
+直接使用v-model实现双向绑定，修饰符trem(去除前后空格),number(转为数字),lazy(失去焦点触发)
 
 ~~~html
 <input type="text" v-model="inputVal">
@@ -394,7 +409,31 @@ v-model绑定多个checkbox
 </script>
 ~~~
 
+## 数据响应
 
+采用下标数组数据的某一个数据时，数据能修改，但是无法更新界面。
+
+改变对象已有属性可以更新视图，但是新增属性也无法更新(全局set方法解决，this.$set()不好使)
+
+~~~js
+changeOne(index){
+    this.list[index] = "aaa"; // 单独使用无法是页面更新
+    this.$forceUpdate()
+    
+    this.splice(index,1,"aaa")
+    
+    this.$set(this.list,index,"aaa")
+    Vue.set(this.list,index,"aaa")
+    // 新增属性name
+    Vue.set(this.obj,"name","name")
+}
+~~~
+
+解决方案： 
+
+* 直接在数据更新之后调用this.$forceUpdate()方法，强制刷新
+* 使用this.list.splice()
+* 使用Vue.set()//this.$set()
 
 ## 事件
 
@@ -484,7 +523,9 @@ $http.get('/todos')
 
 ## ref 获取原生Dom
 
-给dom元素添加ref属性，在vue中通过this.$refs.属性值获取该Dom元素
+### ref="xxx"
+
+给dom元素添加ref属性，在vue中通过this.$refs.属性值获取该Dom元素。指定绑定命名一个固定值
 
 ~~~html
 <input type="text" 
@@ -497,6 +538,79 @@ $http.get('/todos')
 //获取dom并操作dom，光标聚焦
 this.$refs.addInput.focus()
 ~~~
+
+### :ref="xxx"动态绑定
+
+:ref在遍历时根据遍历值，动态绑定元素。这样得到的ref才是不一样的，才能标识元素
+
+~~~vue
+<ul>
+    <li v-for="(item,index) in list">
+        <span @click="getNode(index)" :ref="index">{{item}}</span>
+    </li>
+</ul>
+~~~
+
+### 标识子组件
+
+~~~vue
+<Com ref = "text"></Com>
+// 父组件可以直接通过this.$refs.text.xxx获取子组件的方法或者数据
+~~~
+
+## 插槽slot
+
+### 原slot-将废弃
+
+Com组件，存在两个插槽，一个未命名，默认插槽，另一个命名
+
+~~~js
+var Com = {
+      data(){
+        return{
+          str: "点击"
+        }
+      },
+      template:`<div>
+          <div>组件Com</div>
+          <slot></slot>
+          <slot name="a" :str="str"></slot>
+      </div>`
+    }
+~~~
+
+组件使用时：为插槽内容指定slot字段，指定显示在对应的slot中。
+
+插槽内容可以直接使用该组件从父组件绑定来的数据，如add方法。但要是用该组件的数据时需要用slot-scope绑定props，并且
+
+~~~vue
+<Com :add="add">
+   <div>插槽内容b 默认插槽中显示</div>
+   <button slot="a" slot-scope="props" @click="add(props.str)">{{props.str}}</button>
+</Com>	
+~~~
+
+### v-slot
+
+使用v-slot:xxx 取代slot来指定插槽位置，xxx对应slot的命名，但是插槽内容需要使用template标签包裹。`v-slot:`可简写为#
+
+数据传递直接给v-slot:xxx = ""传递
+
+~~~vue
+<Com :add="add">
+    <template #default>
+        <div>插槽内容b 默认</div>
+    </template>
+    <template v-slot:a='{str}'>
+        <button @click="add(str)">{{str}}</button>
+    </template>
+    <template #p>
+        <p>插槽v-slot:可简写为#</p>
+    </template>
+</Com>
+~~~
+
+
 
 ## mixin混入
 
@@ -552,7 +666,7 @@ Vue.mixin(myMixin)
 * inserted  被绑定元素插入父节点时调用，最常用
 * bind
 
-钩子函数的参数
+inserted钩子函数的参数
 
 * el 指令所绑定的元素，可用于直接操作DOM
 * binding  一个对象，包含以下属性
@@ -583,13 +697,13 @@ Vue.directive('focus', {
     directives: {
         focus: {
             inserted (el, bingding) {
-            //inserted 被绑定元素插入父节点时调用
-            el.focus()
+                //inserted 被绑定元素插入父节点时调用
+                el.focus()
             },
             bind () {
-			//bind 只调用一次，指令第一次绑定时调用
-            }
-        }
+                 //bind 只调用一次，指令第一次绑定时调用
+             }
+      	}
     }
 }
 ~~~
@@ -666,6 +780,8 @@ vue实例下不同时期获取实例的相关内容输出进行比较
 
 挂载之前，拿到容器元素，但是数据还没有往元素上面渲染，这里一般不会做太多操作。
 
+注意：此钩子中数据已经改变，只是页面还未渲染
+
 #### mounted
 
 关联dom，挂载dom完成，渲染dom完成
@@ -690,3 +806,20 @@ vue实例下不同时期获取实例的相关内容输出进行比较
 
 #### destroyed
 
+### keep-alive
+
+当组件使用keep-alive后，不存在销毁阶段的钩子，由下面两个钩子取代
+
+#### activated
+
+keep-alive组件激活时调用，在服务器端渲染期间不被调用
+
+#### deactivated
+
+keep-alive组件停用时调用
+
+### errorCaptured
+
+当捕获到一个来自子孙组件的错误时调用，接收三个参数：错误对象，发生错误的组件实例，错误信息来源的字符串。
+
+此钩子返回false可以阻止错误继续向上传播。模板或渲染函数中设置短路条件可以避免错误的发生。

@@ -3,7 +3,7 @@ ES5  ES6   面向对象  this指向问题
 ### Tips
 
 * 通过方法获取到dom元素的类数组,如li标签的集合lis,遍历时lis[i].index=vlaue与
-* var arr = arr1.concat(arr2);  //将数组arr2的元素添加到arr1后生成新数组
+* var arr = arr1.concat(arr2);  //将数组arr2的元素添加到arr1后生成新数组，不改变原数组
 * arr.includes(value)判断arr数组是否包含value值,是则返回true，不包含则返回false
 * 通过ele.来为元素添加自定义属性时元素查看时不显示的，也可以通过.来获取，
 * 通过ele.setAttribute(name,value)会显示在DOM上，获取值时需要用getAttribute("name")获取

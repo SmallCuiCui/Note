@@ -6,20 +6,49 @@
 
 `cnpm install webpack-cli -g`
 
-项目中使用的时候还需要局部安装。
+项目中使用的时候还需要局部-D安装。
 
 默认入口文件： src/index.js
 
 默认出口文件： dist/main.js
 
-打包： webpack
+默认打包： webpack  
 
 指定模式打包：webpack --mode=development -W  也是无配置打包,-w的作用是当文件发生变化时
 
-打包模式：
+### 核心概念
 
-1. development  我压缩
-2. production  压缩
+#### 入口
+
+#### 出口
+
+#### loader
+
+#### 插件
+
+#### 模式
+
+##### 用法
+
+1. 配置项中添加mode字段
+
+   ~~~js
+   module.exports = {
+     mode: 'production'
+   };
+   ~~~
+
+2. 打包时指定 webpack --mode=production
+
+##### development
+
+开发模式
+
+##### production
+
+development  无压缩
+
+1. production  压缩
 
 配置文件：webpack.config.js  写在项目的根目录下
 

@@ -1,3 +1,9 @@
+## vue-cli
+
+安装`cnpm install -g @vue/cli-service-global`
+
+创建一个项目：`vue create hello-world`
+
 ## 分页类型
 
 ### SPA单页应用

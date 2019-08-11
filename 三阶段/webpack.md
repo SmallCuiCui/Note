@@ -16,12 +16,18 @@ JavaScript程序的静态模块打包器，它会递归创建关系依赖图。�
 
 ### 打包
 
-默认打包： webpack  
+#### 无配置
 
-指定模式打包：webpack --mode=development -W  也是无配置打包,-w的作用是当文件发生变化时
+默认打包： webpack ，按照默认的出口，入口，模式进行打包
+
+指定模式打包：webpack --mode=development -W  也是无配置打包,-w的作用是当文件发生变化时，自动打包
+
+#### 有配置
+
+根目录下新建`webpack.config.js`文件，进行配置项的配置。注意名字不能改
 
 ### 核心概念
-以下均是在配置项目根目录下新建的`webpack.config.js`文件。注意名字不能改
+以下均是在`webpack.config.js`文件的配置。
 
 #### 入口
 
@@ -74,14 +80,14 @@ module.exports = {
 ~~~js
 module.exports = {
   output: {
-    filename: 'bundle.js',
+    filename: 'main.js',
     // filename: '[name].js', // 多个入口时的写法，对应上面最后输出为pageOne.js，pageTwo.js...
-    path: path: __dirname + '/dist'
+    path: path.resolve(__dirname,"dist")
   }
 };
 ~~~
 
-#### 模式
+#### 模式mode
 
 ##### 用法
 
@@ -109,7 +115,7 @@ module.exports = {
 
 #### loader
 
-解析或打包除了js以外的文件，都需要安装特定的loader
+解析或打包除了js以外的文件，都需要安装特定的loader。
 
 ##### 配置
 
@@ -117,7 +123,7 @@ module.exports = {
 module.exports = {
   module: {
     rules: [
-      { test: /\.css$/, use: ['style-loader',css-loader'] },
+      { test: /\.css$/, use: ['style-loader','css-loader'] },
       { test: /\.(png|jpg|gif)$/, use: 'url-loader' }
     ]
   }
@@ -126,36 +132,77 @@ module.exports = {
 
 ##### 常用loader
 
-* css: 安装`style-loader`  `css loader`进行config配置，配置时有顺序
+* css: 安装`style-loader`  `css-loader`进行config配置，配置时有顺序
 * 编译sass：
 
-* 图片文件：`url-loader`  `file-loader`  前置依赖后者，使用后者
+* 图片文件：`url-loader`  `file-loader`  前置依赖后者，使用后者.
 * 解析.vue文件：vue-loader,注意还需要用到一个插件VueLoaderPlugin
 * 解析.ts文件：ts-loader
 
 #### 插件
 
+##### 自动引入文件
 
+* `html-webpack-plugin`  -D局部安装。npm run build进行打包的原理。不需要自己引入文件，它以配置中指定的文件为模板，在dist下生成对应文件，自动为我们引入打包的文件。
 
+  ~~~js
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+  module.exports = {
+  	plugins: [
+          new HtmlWebpackPlugin({template: './index.html'})
+        ]
+  }
+  ~~~
 
+##### npm start原理
 
-配置文件：webpack.config.js  写在项目的根目录下
+* `webpack-dev-server`   需要全局安装以及局部安装。
 
-解析或打包除了js的文件，都要安装特定的 `loader`
+  开发过程中使用npm start的原理，打包命令使用webpack-dev-server 会将打包后的代码运行在localhost:8080下
 
-插件：
+  在项目下的package.json中配置script字段，使用npm start运行项目
 
-`html-webpack-plugin`  局部安装。npm run build进行打包的原理。不需要自己引入文件
+  ~~~js
+  // 配置webpack.config.js文件
+  {
+      mode:'development',
+      devServer:{
+          contentBase: 'dist/', 
+          inline:true // 支持热更新
+      }
+  }
+  ~~~
 
-`webpack-dev-server`   需要全局安装以及局部安装。
+  ~~~js
+  // 配置package.json文件下scripts字段
+  "scripts":{
+      // -w为热更新  --open为自动浏览器打开  --progress为显示进度
+      "start":"webpack-dev-server -w --open --progress"
+    }
+  ~~~
 
-babel配置：ES6转ES5
+#### babel：ES6转ES5
 
 安装： `babel-loader`  `@babel/core`    `@babel/preset-env`
 
+~~~js
+rules: [
+    {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use:{
+            loader: "babel-loader",
+            options: {
+                presets: ["@babel/preset-env","@babel/preset-react"]
+            }
+        }
+    }
+]
+~~~
 
+#### 搭建react环境
 
-### 搭建react环境
+在上面操作的基础上进行，配置项就babel配置的preset添加预设即可。如上代码
 
 安装  `cnpm install react react-dom @babel/preset-react`
 

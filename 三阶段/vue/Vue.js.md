@@ -62,8 +62,6 @@ computed: {
  }
 ```
 
-
-
 ##### watch：监听
 
 监听data中某一个数据，当发生改变时触发的事件。可实现computed的功能，computed更常用
@@ -480,6 +478,8 @@ v-on:事件类型  绑定指定事件，值是JavaScript的表达式或者方法
 
 checkbox选中状态改变时会触发。绑定methods内的函数来处理数据的变化
 
+#### @keyup
+
 #### nextTick
 
 在进行异步请求数据时使用。nextTick()在下一次Dom循环结束之后调用，返回的是一个promise
@@ -491,13 +491,13 @@ $http = axios.create({
 $http.get('/todos')
     .then(resp=>{
         //获得数据
-        this.lists = reso.list
+        this.lists = resp.list
         // nextTick()在下一次Dom循环结束之后调用，返回的是一个promise
         Vue.nextTick()
             .then(() => {
-            this.initSwiper()
-    })
-})
+            	this.initSwiper()
+    	})
+	})
 
 ~~~
 
@@ -609,8 +609,6 @@ var Com = {
     </template>
 </Com>
 ~~~
-
-
 
 ## mixin混入
 

@@ -99,10 +99,6 @@ var reducer = combineReducers({
 console.log(store.getState().one.n)
 ~~~
 
-
-
-
-
 ## context
 
 上下文对象，提供一种组件之间无需使用props进行数据传递的方式。
@@ -113,7 +109,7 @@ console.log(store.getState().one.n)
   // conten
   import React,{Component, createContext} from "react"
 
-  let {Provider, Consumer} = createContext()
+  let {Provider, Consumer} = ()
   
   class ContentProvider extends Component{
   	render(){

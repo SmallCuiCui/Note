@@ -271,9 +271,9 @@ new Vue({
 ~~~html
 <!--组件下<router-link>-->
 
-<!--to属性 提供路由的 name -->
-<router-link tag="li" :to="{name: 'category', params: {cateName: 'man', id: 5}}">男士</router-link>
-<!--功能类似于  router.push({ name: 'category', params: {cateName: 'man', id: 5}})-->
+<!--to属性 提供路由的 name 可以搭配params使用，也开始和query一起使用-->
+<router-link tag="li" :to="{name: 'category', params: {cateName: 'man', id: 5}, query:{}}">男士</router-link>
+<!--功能类似于 router.push({ name: 'category', params: {cateName: 'man', id: 5}})-->
 
 <!--to属性 手写完整的带有参数的 path 动态组件下获取到的params.cateName='woman'-->
 <router-link tag="li" :to="{path: '/list/woman', query: {id: 2}}">女士</router-link>

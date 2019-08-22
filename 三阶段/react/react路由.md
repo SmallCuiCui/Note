@@ -101,7 +101,7 @@ componentDidMount
 
 componentDidUpdate
 
-\<Route path="/home:type" component={} />
+\<Route path="/home:type" component={...} />
 
 #### 获取
 

@@ -600,7 +600,7 @@ console.log(a.say1 === b.say1);//true，都是原型上的函数，原型上的�
 
 * constructor 构造函数的原型(prototype)里面的constructor指向构造函数本身
 
-* \_\_proto\_\_ 指向父类的prototype，每一个对象都有这个属性
+* \_\_proto\_\_ 指向构造函数的prototype，每一个对象都有这个属性
 
 * prototype  一个指针，指向当前对象的原型对象。只有函数会有这个属性
 
@@ -610,12 +610,12 @@ console.log(a.say1 === b.say1);//true，都是原型上的函数，原型上的�
   console.log(tom instanceof Cat);//true  可以用于判断变量是否为数组或对象
   ~~~
 
-* hasOwnProperty  判断实例对象上是否存在某个属性，且这个方法会过滤到原型上的属性
+* hasOwnProperty  判断实例对象上是否存在某个属性或方法，且这个方法会过滤掉原型上的属性，只能找到实例拥有的，语法糖的话只能找到constructor里面的内容。
 
   ~~~javascript
   console.log(tom.hasOwnProperty("say"))//true，构造函数里的属性为true
   //原型上的方法为false
-  console.log(tom.hasOwnProperty("name"))sjhdu
+  console.log(tom.hasOwnProperty("name"))
   ~~~
 
 * isPrototypeOf  检查对象是否存在于另一个对象的原型链上

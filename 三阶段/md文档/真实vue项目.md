@@ -79,12 +79,12 @@ export default [
 **index.js**
 
 import Vue from 'vue'  //vue
-import VueRouter from 'vue-router' //router
+import Router from 'vue-router' //router
 import routes from './routes' //引入routes.js
 
-Vue.use(VueRouter) //中间件
+Vue.use(Router) //中间件
 
-export default new VueRouter({
+export default new Router({
   routes
 })  //暴露路由
 ```
@@ -124,7 +124,7 @@ export default new VueRouter({
 //设置一个类加入<i></i>标签里
 ```
 
-复制阿里矢量图的图标代码，写在<i></i>标签里。
+复制阿里矢量图的图标代码，写在\<i>\</i>标签里。
 
 ### 项目UI
 

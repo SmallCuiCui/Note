@@ -123,7 +123,7 @@ BEM代表块（Block），元素（Element），修饰符（Modifier）。
 
 #### fetch
 
-ES6中出现，使用promise对象，原生的js，没有使用XMLHTTPRequest对象
+ES6中出现，基于promise实现，支持await与async，原生的js，没有使用XMLHTTPRequest对象，代码简洁
 
 web提供的获取异步资源的api，可省去ajax请求的繁琐，目前还未被所有浏览器兼容，返回一个promise，第一个then()中需要对返回数据进行处理，第二个then()中再操作数据。默认get方法
 
@@ -132,11 +132,23 @@ web提供的获取异步资源的api，可省去ajax请求的繁琐，目前还�
 fetch('https://jsonplaceholder.typicode.com/todos')
     .then(resp => resp.json())
     .then(resp => console.log(resp))
+// 配置参数 fetch(url,init)
+fetch(url,{
+    method:'POST',
+    body:JSON.stringify(data),//也可以是一个对象，要ntent-type匹配
+    headers:{
+        'user-agent':'xxx',
+        'content-type':'applaication/json'
+    }
+}).then(res => res.json())
+.then(res => {
+	console.log(res)
+})
 ~~~
 
 #### 传统ajax
 
-传统 Ajax 指的是 XMLHttpRequest（XHR），核心使用XMLHttpRequest对象，多个请求之间如果存在先后关系会造成回调地狱
+传统 Ajax 指的是 XMLHttpRequest（XHR）封装的方法(四步)，核心使用XMLHttpRequest对象，多个请求之间如果存在先后关系会造成回调地狱
 
 #### JQuery ajax
 
@@ -166,7 +178,7 @@ vue中推荐使用它来进行数据请求，功能上对比fetch可设置axios�
 const ajax = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com'
 })
-
+// const ajax = axios.creat()
 ~~~
 
 ##### get()/post()
@@ -174,7 +186,7 @@ const ajax = axios.create({
 * get()
 
   ~~~javascript
-  axios.get('/user?ID=12345',{
+  ajax.get('/user?ID=12345',{
       params: {
         ID: 12345
       }
@@ -195,7 +207,7 @@ const ajax = axios.create({
 * post()
 
   ~~~javascript
-  axios.post('/user', {
+  ajax.post('/user', {
       firstName: 'Fred',
       lastName: 'Flintstone'
     })
@@ -207,10 +219,33 @@ const ajax = axios.create({
     });
   ~~~
 
+##### config
+
+~~~js
+axios({
+  method: 'post',//必须
+  url: '/user/12345',
+  data: { // 用于method为PUT/post/patch时
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  },
+  daseURL:"",
+  headers:{},
+  params:{},
+  transformRequest:[function(data,header){
+      //....
+     return data
+  }],
+  transformResponse:[function(response){
+      //...
+    return response
+	}]
+});
+~~~
 
 ##### 拦截器Interceptors
 
-应用于等待数据加载成功的过程中，给用户等待的效果，如转动的圈
+实例的方法，应用于等待数据加载成功的过程中，给用户等待的效果，如转动的圈。
 
 ###### 请求拦截器
 
@@ -242,6 +277,8 @@ ajax.interceptors.response.use((resp)=>{
 
 ##### axios挂载到Vue
 
+常在src下面新建request文件夹，新建index文件专门处理axios请求，然后将方法暴露出去。在main.js中引入该index中暴露的方法，存到一个对象上面，再将对象挂载到全局Vue上面，这样所有的Vue实例都可以调用。
+
 ```javascript
 //在vue应用下可以将axios实例挂载到Vue上
 // 把这个实例挂载Vue构造器的原型上
@@ -257,12 +294,6 @@ new Vue({
       }
     })
 ```
-
-##### 项目中使用
-
-常在src下面新建request文件夹，新建index文件专门处理axios请求，然后将方法暴露出去。在main.js中引入该index中暴露的方法，存到一个对象上面，再将对象挂载到全局Vue上面，这样所有的Vue实例都可以调用。
-
-
 
 
 

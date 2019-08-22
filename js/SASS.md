@@ -97,8 +97,6 @@ sass中导入其他sass文件，最后编译为一个css文件
 
 
 
-
-
 #### 变量
 
 ##### 定义$
@@ -122,7 +120,7 @@ p{
 
 ##### 复杂变量
 
-定义：$linkColor:#333333 white #cccccc!default; 变量分别作为属性值与变量名使用
+定义：$linkColor:#333333 white #cccccc !default; 变量分别作为属性值与变量名使用
 
 ~~~
 //变量当属性值使用
@@ -191,10 +189,10 @@ keywords($args)  //返回一个关键字
 $header:(h1:30px,h2:40px,h3:50px);
 div{
     @each $key,$value in $header{
-    #{$key}{
-        font-size:$value;
-    }
-  }
+        #{$key}{
+            font-size:$value;
+        }
+  	}
 }
 //编译后
 div h1 {font-size: 50px; }

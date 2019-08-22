@@ -10,9 +10,19 @@
 require ('min-ui')
 ~~~
 
+#### 按需引入
 
+* 安装插件`npm install babel-plugin-component -D`
 
-#### 局部引入
+* 配置打包文件-看文档
+
+* 使用，在main.js引入，或者专门找一个文件管理
+
+  ~~~
+  Vue.component(Button.name, Button)
+   Vue.use(Button)
+  Vue.use(Cell)
+  ~~~
 
 ### css样式reset
 
@@ -214,7 +224,9 @@ import { mapActions } from 'vuex'
 }
 ~~~
 
+#### module
 
+分模块
 
 ### 订阅
 
@@ -308,6 +320,6 @@ store.subscribeAction((action, state) => {
 
 ## 项目上线
 
-使用npm run build生成dis
+使用npm run build生成dist
 
 DNS解析、域名、服务器

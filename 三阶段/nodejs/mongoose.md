@@ -85,12 +85,16 @@ db.once('open',function(){
 //schema把非关系型数据库装换为关系型结构
 var userSchema = new mongoose.Schema({
   name: String,
-  password:String
+  age:NUmber
 });
 //根据userSchema得到一个模型，相当于关系型数据库中的表
 //users是数据库下的一个collection，在我这里测试必须加有s，user运行不成功。。
-let userModle = mongoose.model("users",userSchema);
+let User = mongoose.model("users",userSchema);
 
+
+// 直接实例化的时候写，不用单独初始化schema
+var mongoose = require("../db/connect")
+var Goods = mongoose.model("student",{name: String,age: Number},"student")
 ```
 
 ###### 插入 
@@ -99,12 +103,16 @@ let userModle = mongoose.model("users",userSchema);
 
 ```javascript
 //根据users模型得到一个实例，相当于表中的一条数据
-let kitty = new userModle({username:"kitty",password："123"})
-
+let kitty = new User({username:"kitty",password："123"})
 //存数据，异步方法。将实例存进MongoDB中
 kitty.save(function(err,kitty){
 	if(err) return console.error(err);
 	else console.log("succ);
+})
+    
+//简写
+new User({username:"kitty",password："123"}).save().then(response => {
+    res.json({...})
 })
 ```
 
@@ -112,12 +120,17 @@ kitty.save(function(err,kitty){
 
  model().find()  使用模型进行查询
 
-```
-userModle.find(where,(err,docs)=>{
+```js
+User.find(where,(err,docs)=>{
 	if(err) return console.error(err);
 	console.log(docs);
 })
-
+// then()
+User.find().then(respsonse => {
+    if(response.length > 0){
+        ....
+    }
+})
 ```
 
 ###### 更新
@@ -128,7 +141,7 @@ updateOne()与updateMany()
 //@param where<Object> 更新条件
 //@param updated<Object> 更新数据
 //只更新第一条匹配
-userModle.updateOne(where,updated,(err,res)=>{
+User.updateOne(where,updated,(err,res)=>{
     if(err)reject(err);
     else resolve(res);
     //res:{ ok: 1, nModified: 1, n: 1 }
@@ -154,10 +167,12 @@ userModle.deleteOne(where,err=>{
     else resolve()
 })
 //删除所有匹配			
-userModle.deleteMany(where,err=>{
+User.deleteMany(where,err=>{
     if(err) reject(err);
     else resolve()
 })
+//简写
+User.remove({id}).then(response => {...})
 ~~~
 
 #### robo3T

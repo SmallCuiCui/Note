@@ -217,7 +217,7 @@ Object.defineProperty(obj,{
 
 * Array.from(lis);  将类数组(如元素节点集合NodeList)转换为数组
 
-##### 声明变量
+##### 声明变量let/const
 
 * var a; 函数作用域，存在变量提升
 
